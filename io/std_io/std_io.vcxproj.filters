@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Public">
+      <UniqueIdentifier>{2d591869-dcad-48ac-b8b9-d8286a11ab34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\AutoObject">
+      <UniqueIdentifier>{f7520387-b1e3-464d-884a-fbe4b918994f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{0fe67bf8-f09d-4887-bc4b-046dcd877db4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\QuickLib">
+      <UniqueIdentifier>{6ec8d1d6-d9d0-42c9-8001-5f133de21c35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\QuickLib\kEncrypt">
+      <UniqueIdentifier>{aac7962a-13e9-48a0-9711-93d4ccce68ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\QuickLib\kEncrypt\implement">
+      <UniqueIdentifier>{f9bd91c2-aa90-492b-83ac-9530e25db927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\QuickLib\kString">
+      <UniqueIdentifier>{06a278bb-e19b-45af-bd9c-cf8749ec3768}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\AutoObject\letMacro.h">
+      <Filter>Public\AutoObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\AutoObject\LetManager.h">
+      <Filter>Public\AutoObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\AutoObject\LetObject.h">
+      <Filter>Public\AutoObject</Filter>
+    </ClInclude>
+    <ClInclude Include="std_io.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="main\printAuto.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\QuickLib\QuickLib\QuickLib\encrypt.h">
+      <Filter>Public\QuickLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\QuickLib\QuickLib\QuickLib\quicklib.h">
+      <Filter>Public\QuickLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\QuickLib\QuickLib\QuickLib\string.h">
+      <Filter>Public\QuickLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\QuickLib\QuickLib\QuickLib\kEncrypt\base64.h">
+      <Filter>Public\QuickLib\kEncrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\QuickLib\QuickLib\QuickLib\kEncrypt\md5.h">
+      <Filter>Public\QuickLib\kEncrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\QuickLib\QuickLib\QuickLib\kEncrypt\implement\md5encrypt.h">
+      <Filter>Public\QuickLib\kEncrypt\implement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\QuickLib\QuickLib\QuickLib\kString\kString.h">
+      <Filter>Public\QuickLib\kString</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\array\std_array\Public\AutoObject\LetArrayMotion.h">
+      <Filter>Public\AutoObject</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\AutoObject\LetManager.cpp">
+      <Filter>Public\AutoObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\AutoObject\LetObject.cpp">
+      <Filter>Public\AutoObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\AutoObject\LetObjectOperator.cpp">
+      <Filter>Public\AutoObject</Filter>
+    </ClCompile>
+    <ClCompile Include="std_io.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main\printAuto.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\QuickLib\QuickLib\QuickLib\kEncrypt\base64.cpp">
+      <Filter>Public\QuickLib\kEncrypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\QuickLib\QuickLib\QuickLib\kEncrypt\md5.cpp">
+      <Filter>Public\QuickLib\kEncrypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\QuickLib\QuickLib\QuickLib\kEncrypt\implement\md5encrypt.cpp">
+      <Filter>Public\QuickLib\kEncrypt\implement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\QuickLib\QuickLib\QuickLib\kString\kString.cpp">
+      <Filter>Public\QuickLib\kString</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\array\std_array\Public\AutoObject\LetArrayMotion.cpp">
+      <Filter>Public\AutoObject</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Public\AutoObject\LetObject.tpp">
+      <Filter>Public\AutoObject</Filter>
+    </None>
+    <None Include="..\..\..\QuickLib\QuickLib\QuickLib\kString\kString.tpp">
+      <Filter>Public\QuickLib\kString</Filter>
+    </None>
+  </ItemGroup>
+</Project>
