@@ -26,7 +26,7 @@ void s_call(std::string name, auto_c* ret, Args... Ts) {
 
 int main(int args , char** argv)
 {
-    auto_c param1, param2, param3,param4;
+    auto_c param1, param2, param3,param4,param5,param6;
     auto_c ret1,ret2,ret3,ret4,ret5;
 
     param1 << "abc defg";
