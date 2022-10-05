@@ -1,6 +1,12 @@
 #include "std_os.h"
 #include "QuickLib/quicklib.h"
 
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
+
 #define Fname(var) void __system__os__##var##__ (void* param,void* ret)
 #define EXPORTDLL(var) extern "C" _declspec(dllexport) Fname(var)
 #define RESULT(var) auto_c*var = (auto_c*)ret; *var = auto_c(false,false)
@@ -376,6 +382,22 @@ namespace Cervice {
 			else
 				PTR(rets) << false;
 
+			return;
+		}
+
+		EXPORTDLL(sleep) {
+			PARAMS(params);
+			RESULT(rets);
+
+			auto value1 = Funcs::getParam<LetObject>(params);
+			if (value1.getType() != LetObject::ObjT::number) {
+				return;
+			}
+
+			numberT commands = LetObject::cast<numberT>(value1);
+			::Sleep(commands);
+			
+			PTR(rets) = value1;
 			return;
 		}
 

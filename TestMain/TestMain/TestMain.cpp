@@ -26,16 +26,14 @@ void s_call(std::string name, auto_c* ret, Args... Ts) {
 
 int main(int args , char** argv)
 {
-    auto_c param1, param2, param3,param4,param5,param6;
+    auto_c param1, param2, param3,param4;
     auto_c ret1,ret2,ret3,ret4,ret5;
 
     param1 << "abc defg";
     param2 << "123456";
+    param3 << 10000;
 
-    s_call(func("hasBlank", TypS), &ret1, param1);
-    s_call(func("print", IoS), &ret2, ret1);
-
-    s_call(func("isBlank", TypS), &ret1, param1);
+    s_call(func("sleep", OsS), &ret1, param3);
     s_call(func("print", IoS), &ret2, ret1);
 
     return 0;

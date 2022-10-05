@@ -52,6 +52,9 @@ namespace Cervice {
 		// system	系统命令 : 命令 -> 执行成功返回true 失败返回false
 		EXPORTDLL(system);
 
+		// sleep    睡眠命令 ：数字 -> 成功返回睡眠时间 , 失败返回null
+		EXPORTDLL(sleep);
+
 		// argv		获取启动参数 : (void) -> 返回数组
 		EXPORTDLL(argv);
 
