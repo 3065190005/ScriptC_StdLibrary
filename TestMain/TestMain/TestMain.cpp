@@ -12,6 +12,7 @@ using namespace Cervice::Obj;
 #define VecS "vec__"
 #define TimS "time__"
 #define TypS "type__"
+#define WindowS "fltk_window__"
 
 #define func(var,va2)( "__system__" va2 var "__")
 
@@ -24,18 +25,26 @@ void s_call(std::string name, auto_c* ret, Args... Ts) {
     manager->callFunc(func, &param, ret);
 }
 
+
 int main(int args , char** argv)
 {
+
+    DllFuncReader* manager = DllFuncReader::getInstance();
+    auto func = manager->getFuncFromDll("__system___setArgv__");
+    manager->callFunc(func, (std::vector<auto_c>*)argv, (auto_c*)&args);
+
     auto_c param1, param2, param3,param4;
     auto_c ret1,ret2,ret3,ret4,ret5;
 
-    param1 << "abc defg";
-    param2 << "123456";
-    param3 << 10000;
+    param3 << "hello";
+    param4 << "world";
+    param2 << 2;
 
-    s_call(func("sleep", OsS), &ret1, param3);
-    s_call(func("print", IoS), &ret2, ret1);
-
+    numberT numb = 0;
+    s_call(func("hideControl", WindowS), &ret1, param1);
+    while (numb++ < 1000) {}
+    s_call(func("showControl", WindowS), &ret1, param1);
+    system("pause");
     return 0;
 }
 
