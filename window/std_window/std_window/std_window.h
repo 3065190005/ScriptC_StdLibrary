@@ -10,8 +10,16 @@
 
 namespace Cervice {
 	namespace Obj {
-		// 显示MessageBox
+		// msgbox		 创建对话框		：成功返回按钮id，否则返回false
 		EXPORTDLL(msgBox);
+
+		// edgeBox		 创建输入框		：成功返回输入文本，否则返回false
+		EXPORTDLL(editBox);
+
+
+		// bowserBox	 创建选择框		: 成功返回路径，否则返回false
+		EXPORTDLL(bowserBox);
+
 
 		// hideControl    隐藏控制台		: 成功则返回true，否则返回false
 		EXPORTDLL(hideControl);
