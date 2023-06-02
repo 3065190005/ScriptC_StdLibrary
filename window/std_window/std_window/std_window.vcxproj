@@ -173,6 +173,7 @@ update.bat</Command>
     <ClCompile Include="Public\AutoObject\LetObject.cpp" />
     <ClCompile Include="Public\AutoObject\LetObjectOperator.cpp" />
     <ClCompile Include="std_window.cpp" />
+    <ClCompile Include="webbowser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\QuickLib\QuickLib\QuickLib\encrypt.h" />
@@ -187,6 +188,7 @@ update.bat</Command>
     <ClInclude Include="Public\AutoObject\LetManager.h" />
     <ClInclude Include="Public\AutoObject\LetObject.h" />
     <ClInclude Include="std_window.h" />
+    <ClInclude Include="webbowser.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\QuickLib\QuickLib\QuickLib\kString\kString.tpp" />

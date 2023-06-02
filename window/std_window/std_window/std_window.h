@@ -21,6 +21,14 @@ namespace Cervice {
 		EXPORTDLL(bowserBox);
 
 
+		// htmlBox		 创建html窗口	: 成功返回true，否则返回false
+		EXPORTDLL(htmlBox);
+
+
+		// urlBox		 创建url窗口	: 成功返回true，否则返回false
+		EXPORTDLL(urlBox);
+
+
 		// hideControl    隐藏控制台		: 成功则返回true，否则返回false
 		EXPORTDLL(hideControl);
 

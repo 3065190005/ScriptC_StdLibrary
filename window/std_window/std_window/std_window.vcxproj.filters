@@ -60,6 +60,9 @@
     <ClCompile Include="..\..\..\..\QuickLib\QuickLib\QuickLib\kString\kString.cpp">
       <Filter>Public\QuickLib\kString</Filter>
     </ClCompile>
+    <ClCompile Include="webbowser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="std_window.h">
@@ -97,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\QuickLib\QuickLib\QuickLib\kString\kString.h">
       <Filter>Public\QuickLib\kString</Filter>
+    </ClInclude>
+    <ClInclude Include="webbowser.h">
+      <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

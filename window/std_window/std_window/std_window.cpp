@@ -3,6 +3,8 @@
 #include <windows.h>
 #include "Shlobj.h"
 
+#include "webbowser.h"
+
 #define Fname(var) void __system__fltk_window__##var##__ (void* param,void* ret)
 #define EXPORTDLL(var) extern "C" _declspec(dllexport) Fname(var)
 #define RESULT(var) auto_c*var = (auto_c*)ret; *var = auto_c(false,false)
@@ -233,6 +235,52 @@ namespace Cervice {
 			}
 
 			PTR(rets) << path;
+			return;
+		}
+
+
+		EXPORTDLL(htmlBox) {
+			PARAMS(params);
+			RESULT(rets);
+
+			auto value1 = Funcs::getParam<LetObject>(params);
+			auto value2 = Funcs::getParam<LetObject>(params);
+
+			if (value1.getType() != LetObject::ObjT::string ||
+				value2.getType() != LetObject::ObjT::string)
+			{
+				PTR(rets) << false;
+				return;
+			}
+
+			std::string title,html;
+			value2 >> title;
+			value1 >> html;
+
+			PTR(rets) << CXWebBrowser::CreateWithHtml(title,html);
+			return;
+		}
+
+
+		EXPORTDLL(urlBox) {
+			PARAMS(params);
+			RESULT(rets);
+
+			auto value1 = Funcs::getParam<LetObject>(params);
+			auto value2 = Funcs::getParam<LetObject>(params);
+
+			if (value1.getType() != LetObject::ObjT::string ||
+				value2.getType() != LetObject::ObjT::string)
+			{
+				PTR(rets) << false;
+				return;
+			}
+
+			std::string title, url;
+			value2 >> title;
+			value1 >> url;
+
+			PTR(rets) << CXWebBrowser::CreateWithUrl(title, url);
 			return;
 		}
 
