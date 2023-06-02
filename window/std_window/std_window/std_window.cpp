@@ -43,6 +43,8 @@ namespace {
 		(*pam) = call(params);
 		(((*pams) = call(params)), ...);
 	}
+
+	HWND control_hwnd = NULL;
 }
 
 
@@ -177,17 +179,17 @@ namespace Cervice {
 			auto value2 = Funcs::getParam<LetObject>(params);
 			auto value3 = Funcs::getParam<LetObject>(params);
 
-			if (value1.getType() != LetObject::ObjT::string ||
+			if (value3.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string||
-				value3.getType() != LetObject::ObjT::number)
+				value1.getType() != LetObject::ObjT::number)
 			{
 				PTR(rets) << false;
 				return;
 			}
 
 			std::string Txt,Title;
-			value3 >> Txt;
-			value2 >> Title;
+			value3 >> Title;
+			value2 >> Txt;
 			numberT type;
 			value1 >> type;
 
@@ -240,12 +242,14 @@ namespace Cervice {
 			PARAMS(params);
 			RESULT(rets);
 
-			HWND hwnd = GetForegroundWindow();
-			if (!hwnd) {
+			if(control_hwnd == NULL)
+				control_hwnd = GetForegroundWindow();
+			
+			if (!control_hwnd) {
 				PTR(rets) << false;
 				return;
 			}
-			ShowWindow(hwnd, SW_HIDE);
+			ShowWindow(control_hwnd, SW_HIDE);
 
 			PTR(rets) << true;
 			return;
@@ -258,12 +262,11 @@ namespace Cervice {
 			PARAMS(params);
 			RESULT(rets);
 
-			HWND hwnd = GetForegroundWindow();
-			if (!hwnd) {
+			if (!control_hwnd) {
 				PTR(rets) << false;
 				return;
 			}
-			ShowWindow(hwnd, SW_SHOW);
+			ShowWindow(control_hwnd, SW_SHOW);
 
 			PTR(rets) << true;
 			return;
