@@ -28,6 +28,22 @@ namespace Cervice {
 		// urlBox		 创建url窗口	: 成功返回true，否则返回false
 		EXPORTDLL(urlBox);
 
+		// setWebStyle   设置样式	: 成功返回true，否则返回false
+		EXPORTDLL(setWebBoxStyle);
+
+
+		// getWebStyle   获取样式	: 成功返回numberT，否则返回false
+		EXPORTDLL(getWebBoxStyle);
+
+
+		// setWebBoxSize  设置大小	: 成功返回true，否则返回false
+		EXPORTDLL(setWebBoxSize);
+
+
+		// getWebBoxSize   获取大小	: 成功返回array，否则返回false
+		EXPORTDLL(getWebBoxSize);
+
+
 
 		// hideControl    隐藏控制台		: 成功则返回true，否则返回false
 		EXPORTDLL(hideControl);

@@ -284,6 +284,88 @@ namespace Cervice {
 			return;
 		}
 
+
+		// setWebStyle   设置样式	: 成功返回true，否则返回false
+		EXPORTDLL(setWebBoxStyle)
+		{
+			PARAMS(params);
+			RESULT(rets);
+
+			auto value1 = Funcs::getParam<LetObject>(params);
+
+			if (value1.getType() != LetObject::ObjT::number)
+			{
+				PTR(rets) << false;
+				return;
+			}
+
+			numberT style;
+			value1 >> style;
+			CXWebBrowser::window_style = (DWORD)style;
+
+			PTR(rets) << true;
+			return;
+		}
+
+
+		// getWebStyle   获取样式	: 成功返回numberT，否则返回false
+		EXPORTDLL(getWebBoxStyle)
+		{
+			PARAMS(params);
+			RESULT(rets);
+
+			PTR(rets) << numberT(CXWebBrowser::window_style);
+			return;
+		}
+
+
+		// setWebBoxSize  设置大小	: 成功返回true，否则返回false
+		EXPORTDLL(setWebBoxSize)
+		{
+			PARAMS(params);
+			RESULT(rets);
+
+			auto value1 = Funcs::getParam<LetObject>(params);
+			auto value2 = Funcs::getParam<LetObject>(params);
+			auto value3 = Funcs::getParam<LetObject>(params);
+			auto value4 = Funcs::getParam<LetObject>(params);
+
+			if (value1.getType() != LetObject::ObjT::number||
+				value2.getType() != LetObject::ObjT::number||
+				value3.getType() != LetObject::ObjT::number||
+				value4.getType() != LetObject::ObjT::number)
+			{
+				PTR(rets) << false;
+				return;
+			}
+
+			numberT left,top,right,bottom;
+			value1 >> bottom;
+			value2 >> right;
+			value3 >> top;
+			value4 >> left;
+
+			CXWebBrowser::window_rect = { (LONG)left,(LONG)top,(LONG)right,(LONG)bottom };
+
+			PTR(rets) << true;
+			return;
+		}
+
+
+		// getWebBoxSize   获取大小	: 成功返回array，否则返回false
+		EXPORTDLL(getWebBoxSize)
+		{
+			PARAMS(params);
+			RESULT(rets);
+
+			PTR(rets)[0] << (numberT)CXWebBrowser::window_rect.left;
+			PTR(rets)[1] << (numberT)CXWebBrowser::window_rect.top;
+			PTR(rets)[2] << (numberT)CXWebBrowser::window_rect.right;
+			PTR(rets)[3] << (numberT)CXWebBrowser::window_rect.bottom;
+			return;
+		}
+
+
 		// hideControl    隐藏控制台		: 成功则返回true，否则返回false
 		EXPORTDLL(hideControl)
 		{

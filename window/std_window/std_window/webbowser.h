@@ -126,6 +126,10 @@ private://内部私有变量
 	DWORD m_RefCount;					//引用计数
 	IOleInPlaceActiveObject* m_pInPlaceActiveObj;
 public://公开外部可调用函数
+
+	static DWORD window_style;
+	static RECT window_rect;
+
 	void SetRect(const RECT& _rc);
 	RECT PixelToHiMetric(const RECT& _rc);
 	BOOL Initialize(IN HWND hDlg/*窗体句柄,IE控件的容器*/);
