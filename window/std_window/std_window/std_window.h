@@ -28,6 +28,15 @@ namespace Cervice {
 		// urlBox		 创建url窗口	: 成功返回true，否则返回false
 		EXPORTDLL(urlBox);
 
+
+		// htmlView		 创建webview2 html窗口	: 成功返回true，否则返回false
+		EXPORTDLL(htmlView);
+
+
+		// urlView		 创建webview2 url窗口	: 成功返回true，否则返回false
+		EXPORTDLL(urlView);
+
+
 		// setWebStyle   设置样式	: 成功返回true，否则返回false
 		EXPORTDLL(setWebBoxStyle);
 

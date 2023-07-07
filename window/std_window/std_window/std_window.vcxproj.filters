@@ -63,6 +63,9 @@
     <ClCompile Include="webbowser.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="webview2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="std_window.h">
@@ -104,10 +107,14 @@
     <ClInclude Include="webbowser.h">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="webview2.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\QuickLib\QuickLib\QuickLib\kString\kString.tpp">
       <Filter>Public\QuickLib\kString</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -141,7 +141,8 @@ bool CXWebBrowser::CreateWithUrl(std::string title, std::string url)
 		wc.lpfnWndProc = WindowProc_Callback;
 		wc.lpszClassName = &custom_ClassName[0];
 		RegisterClassEx(&wc);
-		if ((msg.hwnd = CreateWindowEx(0, &custom_ClassName[0], title_L, WS_OVERLAPPEDWINDOW, 0, 0, 1024, 768, HWND_DESKTOP, NULL, hInstance, NULL)))
+		if ((msg.hwnd = CreateWindowEx(0, &custom_ClassName[0], title_L,
+			window_style, window_rect.left, window_rect.top, window_rect.right, window_rect.bottom, HWND_DESKTOP, NULL, hInstance, NULL)))
 		{
 			custom_mainWindowHandle = msg.hwnd;
 			if (cWeb)

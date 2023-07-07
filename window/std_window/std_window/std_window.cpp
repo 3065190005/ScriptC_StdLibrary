@@ -4,6 +4,7 @@
 #include "Shlobj.h"
 
 #include "webbowser.h"
+#include "webview2.h"
 
 #define Fname(var) void __system__fltk_window__##var##__ (void* param,void* ret)
 #define EXPORTDLL(var) extern "C" _declspec(dllexport) Fname(var)
@@ -281,6 +282,58 @@ namespace Cervice {
 			value1 >> url;
 
 			PTR(rets) << CXWebBrowser::CreateWithUrl(title, url);
+			return;
+		}
+
+
+
+
+		// htmlView		 创建webview2 html窗口	: 成功返回true，否则返回false
+		EXPORTDLL(htmlView)
+		{
+			PARAMS(params);
+			RESULT(rets);
+
+			auto value1 = Funcs::getParam<LetObject>(params);
+			auto value2 = Funcs::getParam<LetObject>(params);
+
+			if (value1.getType() != LetObject::ObjT::string ||
+				value2.getType() != LetObject::ObjT::string)
+			{
+				PTR(rets) << false;
+				return;
+			}
+
+			std::string title, html;
+			value2 >> title;
+			value1 >> html;
+
+			PTR(rets) << webView2Creater::create_view_with_html(title, html);
+			return;
+		}
+
+
+		// urlView		 创建webview2 url窗口	: 成功返回true，否则返回false
+		EXPORTDLL(urlView)
+		{
+			PARAMS(params);
+			RESULT(rets);
+
+			auto value1 = Funcs::getParam<LetObject>(params);
+			auto value2 = Funcs::getParam<LetObject>(params);
+
+			if (value1.getType() != LetObject::ObjT::string ||
+				value2.getType() != LetObject::ObjT::string)
+			{
+				PTR(rets) << false;
+				return;
+			}
+
+			std::string title, url;
+			value2 >> title;
+			value1 >> url;
+
+			PTR(rets) << webView2Creater::create_view_with_url(title, url);
 			return;
 		}
 
