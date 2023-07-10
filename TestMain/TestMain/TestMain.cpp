@@ -33,7 +33,7 @@ int main(int args , char** argv)
     auto func = manager->getFuncFromDll("__system___setArgv__");
     manager->callFunc(func, (std::vector<auto_c>*)argv, (auto_c*)&args);
 
-    auto_c param1, param2, param3,param4,param5,param6, param7, param8,param9,param10;
+    auto_c param1, param2, param3,param4,param5,param6, param7, param8,param9;
     auto_c ret1,ret2,ret3,ret4,ret5;
 
     param1 << (numberT)WS_OVERLAPPEDWINDOW;
@@ -52,7 +52,11 @@ int main(int args , char** argv)
 </script>
     )";
 
-    s_call(func("htmlView", WindowS), &ret1, param6, param8);
+    s_call(func("getWebBoxSize", WindowS), &ret1, param1, param2);
+    auto_c abc;
+    abc << 1.11;
+    ret1 = abc;
+    s_call(func("print", IoS), &param4, ret1);
     return 0;
 }
 
