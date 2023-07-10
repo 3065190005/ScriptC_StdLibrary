@@ -22,8 +22,6 @@ namespace {
 
 	LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	{
-		TCHAR greeting[] = _T("Hello, Windows desktop!");
-
 		switch (message)
 		{
 		case WM_SIZE:
@@ -96,6 +94,7 @@ bool webView2Creater::create_view_with_url(std::string title, std::string _url)
 		nCmdShow);
 	UpdateWindow(hWnd);
 
+
 	CreateCoreWebView2EnvironmentWithOptions(nullptr, L".\\data\\", nullptr,
 		Callback<ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler>(
 			[hWnd, &html_L](HRESULT result, ICoreWebView2Environment* env) -> HRESULT {
@@ -114,6 +113,17 @@ bool webView2Creater::create_view_with_url(std::string title, std::string _url)
 						RECT bounds;
 						GetClientRect(hWnd, &bounds);
 						webviewController->put_Bounds(bounds);
+
+						// window.close callfunc
+						webview->add_WindowCloseRequested(
+							Callback<ICoreWebView2WindowCloseRequestedEventHandler>(
+								[hWnd](ICoreWebView2* sender, IUnknown* args)
+								{
+									PostMessage(hWnd, WM_CLOSE, 0, 0);
+									return S_OK;
+								})
+							.Get(),
+									nullptr);
 
 						webview->Navigate(html_L);
 
@@ -205,6 +215,17 @@ bool webView2Creater::create_view_with_html(std::string title, std::string _url)
 						RECT bounds;
 						GetClientRect(hWnd, &bounds);
 						webviewController->put_Bounds(bounds);
+
+						// window.close callfunc
+						webview->add_WindowCloseRequested(
+							Callback<ICoreWebView2WindowCloseRequestedEventHandler>(
+								[hWnd](ICoreWebView2* sender, IUnknown* args)
+								{
+									PostMessage(hWnd, WM_CLOSE, 0, 0);
+									return S_OK;
+								})
+							.Get(),
+							nullptr);
 
 						webview->NavigateToString(html_L);
 
