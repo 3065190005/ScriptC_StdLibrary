@@ -51,9 +51,8 @@ bool webView2Creater::create_view_with_url(std::string title, std::string _url)
 	WCHAR szWindowClass[] = { L"ScriptC.view" };
 	int nCmdShow = 10;
 
-	WNDCLASSEX wcex;
+	WNDCLASS wcex;
 
-	wcex.cbSize = sizeof(WNDCLASSEX);
 	wcex.style = CS_HREDRAW | CS_VREDRAW;
 	wcex.lpfnWndProc = WndProc;
 	wcex.cbClsExtra = 0;
@@ -64,9 +63,8 @@ bool webView2Creater::create_view_with_url(std::string title, std::string _url)
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = NULL;
 	wcex.lpszClassName = szWindowClass;
-	wcex.hIconSm = LoadIcon(wcex.hInstance, IDI_APPLICATION);
 
-	if (!RegisterClassEx(&wcex))
+	if (!RegisterClass(&wcex))
 	{
 		return false;
 	}
@@ -109,6 +107,10 @@ bool webView2Creater::create_view_with_url(std::string title, std::string _url)
 						settings->put_IsScriptEnabled(TRUE);
 						settings->put_AreDefaultScriptDialogsEnabled(TRUE);
 						settings->put_IsWebMessageEnabled(TRUE);
+						settings->put_IsStatusBarEnabled(FALSE);    // 控制是否显示状态栏
+						settings->put_AreHostObjectsAllowed(TRUE); // 是否可以使用主机对象
+						settings->put_AreDevToolsEnabled(FALSE);	// 是否启用 DevTools
+						
 
 						RECT bounds;
 						GetClientRect(hWnd, &bounds);
@@ -128,6 +130,7 @@ bool webView2Creater::create_view_with_url(std::string title, std::string _url)
 						webview->Navigate(html_L);
 
 						return S_OK;
+
 					}).Get());
 				return S_OK;
 			}).Get());
@@ -154,9 +157,8 @@ bool webView2Creater::create_view_with_html(std::string title, std::string _url)
 	WCHAR szWindowClass[] = { L"ScriptC.view" };
 	int nCmdShow = 10;
 
-	WNDCLASSEX wcex;
+	WNDCLASS wcex;
 
-	wcex.cbSize = sizeof(WNDCLASSEX);
 	wcex.style = CS_HREDRAW | CS_VREDRAW;
 	wcex.lpfnWndProc = WndProc;
 	wcex.cbClsExtra = 0;
@@ -167,9 +169,8 @@ bool webView2Creater::create_view_with_html(std::string title, std::string _url)
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = NULL;
 	wcex.lpszClassName = szWindowClass;
-	wcex.hIconSm = LoadIcon(wcex.hInstance, IDI_APPLICATION);
 
-	if (!RegisterClassEx(&wcex))
+	if (!RegisterClass(&wcex))
 	{
 		return false;
 	}
@@ -211,6 +212,9 @@ bool webView2Creater::create_view_with_html(std::string title, std::string _url)
 						settings->put_IsScriptEnabled(TRUE);
 						settings->put_AreDefaultScriptDialogsEnabled(TRUE);
 						settings->put_IsWebMessageEnabled(TRUE);
+						settings->put_IsStatusBarEnabled(FALSE);    // 控制是否显示状态栏
+						settings->put_AreHostObjectsAllowed(TRUE); // 是否可以使用主机对象
+						settings->put_AreDevToolsEnabled(FALSE);	// 是否启用 DevTools
 
 						RECT bounds;
 						GetClientRect(hWnd, &bounds);

@@ -28,15 +28,13 @@ void s_call(std::string name, auto_c* ret, Args... Ts) {
 
 int main(int args , char** argv)
 {
-
     DllFuncReader* manager = DllFuncReader::getInstance();
     auto func = manager->getFuncFromDll("__system___setArgv__");
     manager->callFunc(func, (std::vector<auto_c>*)argv, (auto_c*)&args);
 
-    auto_c param1, param2, param3,param4,param5,param6, param7, param8,param9, param10;
+    auto_c param1, param2, param3,param4,param5,param6, param7, param8,param9;
     auto_c ret1,ret2,ret3,ret4,ret5;
 
-    param1 << (numberT)WS_OVERLAPPEDWINDOW;
     param2 << (numberT)15;
     param3 << (numberT)20;
     param4 << (numberT)640;
@@ -44,16 +42,15 @@ int main(int args , char** argv)
     param6 << R"(<b>123</b>)";
     param7 << R"(<u>123</u>)";
     param8 << R"(
-<div class="btn" onclick=search_func()> search</div>
-<script>
-    function search_func() {
-        window.close();
-    }
-</script>
+    <div class="btn" onclick=search_func()> search</div>
+    <script>
+        function search_func() {
+            window.close();
+        }
+    </script>
     )";
 
-    s_call(func("getWebBoxSize", WindowS), &ret1, param1, param2);
-    s_call(func("print", IoS), &param7, ret1);
+    s_call(func("htmlView", WindowS), &ret1, param6, param8);
     return 0;
 }
 
