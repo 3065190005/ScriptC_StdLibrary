@@ -145,6 +145,7 @@ copy /Y E:\VsPro\CerviceScript\STD\CompileDLL\debug\*.* E:\VsPro\CerviceScript\S
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>E:\VsPro\CerviceScript\QuickLib\QuickLib\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -193,6 +194,7 @@ copy /Y  E:\VsPro\CerviceScript\STD\CompileDLL\release\*.* E:\VsPro\CerviceScrip
   <ItemGroup>
     <None Include="..\..\..\QuickLib\QuickLib\QuickLib\kString\kString.tpp" />
     <None Include="LetObject\LetObject.tpp" />
+    <None Include="lua_file.lua" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -13,6 +13,7 @@ using namespace Cervice::Obj;
 #define TimS "time__"
 #define TypS "type__"
 #define WindowS "fltk_window__"
+#define ThreadS "thread__"
 
 #define func(var,va2)( "__system__" va2 var "__")
 
@@ -32,25 +33,54 @@ int main(int args , char** argv)
     auto func = manager->getFuncFromDll("__system___setArgv__");
     manager->callFunc(func, (std::vector<auto_c>*)argv, (auto_c*)&args);
 
-    auto_c param1, param2, param3,param4,param5,param6, param7, param8,param9;
-    auto_c ret1,ret2,ret3,ret4,ret5;
+    auto_c lua_file, name1, param1,name2,param2,name3, param3;
+    auto_c thread_id,result,result_string,ret4,ret5;
 
-    param2 << (numberT)15;
-    param3 << (numberT)20;
-    param4 << (numberT)640;
-    param5 << (numberT)480;
-    param6 << R"(<b>123</b>)";
-    param7 << R"(<u>123</u>)";
-    param8 << R"(
-    <div class="btn" onclick=search_func()> search</div>
-    <script>
-        function search_func() {
-            window.close();
-        }
-    </script>
-    )";
+    result_string << "result_string";
 
-    s_call(func("htmlView", WindowS), &ret1, param6, param8);
+    name1 << "C_number";
+    name2 << "C_string";
+    name3 << "C_boolean";
+
+    param1 << 111;
+    param2 << "33aa";
+    param3 << false;
+
+    lua_file << "lua_file.lua";
+
+    s_call(func("thread_create", ThreadS), &thread_id , lua_file);
+    
+    s_call(func("thread_set", ThreadS), &result, thread_id, name1, param1);
+    s_call(func("thread_set", ThreadS), &result, thread_id, name2, param2);
+    s_call(func("thread_set", ThreadS), &result, thread_id, name3, param3);
+
+
+    s_call(func("thread_run", ThreadS), &result, thread_id);
+
+    s_call(func("thread_stop", ThreadS), &result, thread_id);
+
+    int i = 0;
+    while (i < 1000)
+    {
+        std::cout << i++ << std::endl;
+    }
+
+    s_call(func("thread_resume", ThreadS), &result, thread_id);
+
+    while (true)
+    {
+        s_call(func("thread_state", ThreadS), &result, thread_id);
+        numberT state = LetObject::cast<numberT>(result);
+        if (state == 5)
+            break;
+    }
+
+    s_call(func("thread_get", ThreadS), &result, thread_id, result_string);
+
+
+    s_call(func("thread_detach", ThreadS), &result, thread_id);
+    s_call(func("thread_detach", ThreadS), &result, thread_id);
+    s_call(func("thread_clear", ThreadS), &result, thread_id);
     return 0;
 }
 
@@ -68,10 +98,10 @@ int main(int args , char** argv)
 * -- maybe
 * 高级标准库
 * std_window "window" 窗口库           √
-* std_regex "regex" 正则库
-* std_socket "socket" 网络库
 * std_thread "thread" 线程库
 * std_direct "direct" 目录库
+* std_regex "regex" 正则库
+* std_socket "socket" 网络库
 */
 
 

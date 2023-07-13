@@ -103,5 +103,8 @@
     <None Include="..\..\..\QuickLib\QuickLib\QuickLib\kString\kString.tpp">
       <Filter>Public\kString</Filter>
     </None>
+    <None Include="lua_file.lua">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -130,7 +130,7 @@ namespace Cervice {
 							printAuto_c(i);
 						}
 						else if (i.getType() == LetObject::ObjT::number) {
-							std::cout << std::noshowpoint << LetObject::cast<numberT>(i);
+							std::cout << std::noshowpoint << std::fixed << LetObject::cast<numberT>(i);
 						}
 						else if (i.getType() == LetObject::ObjT::boolean) {
 							std::cout << std::boolalpha << LetObject::cast<bool>(i);
@@ -149,7 +149,7 @@ namespace Cervice {
 							std::cout << std::boolalpha << LetObject::cast<bool>(i);
 						}
 						else if (i.getType() == LetObject::ObjT::number) {
-							std::cout << std::noshowpoint << LetObject::cast<numberT>(i);
+							std::cout << std::noshowpoint << std::fixed << LetObject::cast<numberT>(i);
 						}
 						else {
 							std::cout << LetObject::cast<std::string>(i);
@@ -158,7 +158,7 @@ namespace Cervice {
 				}
 			}
 			else if (value.getType() == LetObject::ObjT::number) {
-				std::cout << std::noshowpoint << LetObject::cast<long double>(value);
+				std::cout << std::noshowpoint << std::fixed << LetObject::cast<long double>(value);
 			}
 			else if (value.getType() == LetObject::ObjT::string) {
 				std::cout << LetObject::cast<std::string>(value);
