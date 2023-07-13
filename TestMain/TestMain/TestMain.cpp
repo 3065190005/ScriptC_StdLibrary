@@ -98,7 +98,7 @@ int main(int args , char** argv)
 * -- maybe
 * 高级标准库
 * std_window "window" 窗口库           √
-* std_thread "thread" 线程库
+* std_thread "thread" 线程库           √
 * std_direct "direct" 目录库
 * std_regex "regex" 正则库
 * std_socket "socket" 网络库
