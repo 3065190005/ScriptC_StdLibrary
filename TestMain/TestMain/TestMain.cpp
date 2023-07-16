@@ -33,7 +33,7 @@ int main(int args , char** argv)
     auto func = manager->getFuncFromDll("__system___setArgv__");
     manager->callFunc(func, (std::vector<auto_c>*)argv, (auto_c*)&args);
 
-    auto_c lua_file, name1, param1,name2,param2,name3, param3;
+    auto_c lua_file, name1, param1,name2,param2,name3, param3, space;
     auto_c thread_id,result,result_string,ret4,ret5;
 
     result_string << "result_string";
@@ -49,7 +49,7 @@ int main(int args , char** argv)
     lua_file << "lua_file.lua";
 
     s_call(func("urlView", WindowS), &result, name1, name1);
-    // s_call(func("editBox", WindowS), &result, name1, name2);
+
     return 0;
 }
 
