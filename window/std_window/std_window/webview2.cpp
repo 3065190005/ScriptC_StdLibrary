@@ -49,7 +49,7 @@ bool webView2Creater::create_view_with_url(std::string title, std::string _url)
 	WCHAR* html_L = custom_CharToWchar(_url.c_str());
 	HINSTANCE hInstance = GetModuleHandle(0);
 	WCHAR szWindowClass[] = { L"ScriptC.view" };
-	int nCmdShow = 10;
+	int nCmdShow = SW_SHOW;
 
 	WNDCLASS wcex;
 
@@ -155,7 +155,7 @@ bool webView2Creater::create_view_with_html(std::string title, std::string _url)
 	WCHAR* html_L = custom_CharToWchar(_url.c_str());
 	HINSTANCE hInstance = GetModuleHandle(0);
 	WCHAR szWindowClass[] = { L"ScriptC.view" };
-	int nCmdShow = 10;
+	int nCmdShow = SW_SHOW;
 
 	WNDCLASS wcex;
 

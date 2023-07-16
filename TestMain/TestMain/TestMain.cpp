@@ -33,12 +33,12 @@ int main(int args , char** argv)
     auto func = manager->getFuncFromDll("__system___setArgv__");
     manager->callFunc(func, (std::vector<auto_c>*)argv, (auto_c*)&args);
 
-    auto_c lua_file, name1, param1,name2,param2,name3, param3;
+    auto_c lua_file, name1, param1,name2,param2,name3, param3,space;
     auto_c thread_id,result,result_string,ret4,ret5;
 
     result_string << "result_string";
 
-    name1 << "C_number";
+    name1 << "https://www.baidu.com/";
     name2 << "C_string";
     name3 << "C_boolean";
 
@@ -48,39 +48,7 @@ int main(int args , char** argv)
 
     lua_file << "lua_file.lua";
 
-    s_call(func("thread_create", ThreadS), &thread_id , lua_file);
-    
-    s_call(func("thread_set", ThreadS), &result, thread_id, name1, param1);
-    s_call(func("thread_set", ThreadS), &result, thread_id, name2, param2);
-    s_call(func("thread_set", ThreadS), &result, thread_id, name3, param3);
-
-
-    s_call(func("thread_run", ThreadS), &result, thread_id);
-
-    s_call(func("thread_stop", ThreadS), &result, thread_id);
-
-    int i = 0;
-    while (i < 1000)
-    {
-        std::cout << i++ << std::endl;
-    }
-
-    s_call(func("thread_resume", ThreadS), &result, thread_id);
-
-    while (true)
-    {
-        s_call(func("thread_state", ThreadS), &result, thread_id);
-        numberT state = LetObject::cast<numberT>(result);
-        if (state == 5)
-            break;
-    }
-
-    s_call(func("thread_get", ThreadS), &result, thread_id, result_string);
-
-
-    s_call(func("thread_detach", ThreadS), &result, thread_id);
-    s_call(func("thread_detach", ThreadS), &result, thread_id);
-    s_call(func("thread_clear", ThreadS), &result, thread_id);
+    s_call(func("htmlView", WindowS), &result, name1, name1);
     return 0;
 }
 
