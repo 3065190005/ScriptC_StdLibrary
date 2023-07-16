@@ -190,11 +190,18 @@ copy /Y  E:\VsPro\CerviceScript\STD\CompileDLL\release\*.* E:\VsPro\CerviceScrip
     <ClInclude Include="LetObject\letMacro.h" />
     <ClInclude Include="LetObject\LetManager.h" />
     <ClInclude Include="LetObject\LetObject.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\QuickLib\QuickLib\QuickLib\kString\kString.tpp" />
     <None Include="LetObject\LetObject.tpp" />
     <None Include="lua_file.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TestMain.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ScriptC.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

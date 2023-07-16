@@ -63,6 +63,7 @@ bool webView2Creater::create_view_with_url(std::string title, std::string _url)
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = NULL;
 	wcex.lpszClassName = szWindowClass;
+	wcex.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 
 	if (!RegisterClass(&wcex))
 	{
@@ -169,6 +170,7 @@ bool webView2Creater::create_view_with_html(std::string title, std::string _url)
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = NULL;
 	wcex.lpszClassName = szWindowClass;
+	wcex.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 
 	if (!RegisterClass(&wcex))
 	{

@@ -95,6 +95,9 @@
     <ClInclude Include="..\..\array\std_array\Public\AutoObject\LetArrayMotion.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="LetObject\LetObject.tpp">
@@ -106,5 +109,15 @@
     <None Include="lua_file.lua">
       <Filter>资源文件</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TestMain.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ScriptC.ico">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -72,6 +72,7 @@ std::string window_bowserBox() {
 }
 
 
+
 HWND hwndInput;
 char text_buffer[809600];
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -93,6 +94,7 @@ std::string window_InputBox(std::string title,std::string txt) {
 	wndclass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 	wndclass.lpszClassName = szAppName;
 	wndclass.lpszMenuName = NULL;
+	wndclass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 
 	if (!RegisterClass(&wndclass))
 	{
@@ -105,12 +107,12 @@ std::string window_InputBox(std::string title,std::string txt) {
 	MultiByteToWideChar(CP_ACP, 0, title.c_str(), 254, m_wchar, len);
 	m_wchar[254] = '\0';
 	
-	hwnd = CreateWindow(szAppName, L"123", WS_OVERLAPPEDWINDOW,
+	hwnd = CreateWindow(szAppName, L"ScriptC", WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, CW_USEDEFAULT,
 		640, 480,
 		NULL, NULL, hInstance, NULL);
 
-	ShowWindow(hwnd, 1);
+	ShowWindow(hwnd, SW_SHOW);
 	UpdateWindow(hwnd);
 
 	SetWindowTextA(hwndInput, txt.c_str());
