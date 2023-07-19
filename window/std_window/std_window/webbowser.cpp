@@ -91,6 +91,8 @@ bool CXWebBrowser::CreateWithHtml(std::string title, std::string html)
 		wc.hInstance = hInstance;
 		wc.lpfnWndProc = WindowProc_Callback;
 		wc.lpszClassName = &custom_ClassName[0];
+		wc.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(101));
+
 		RegisterClassEx(&wc);
 		if ((msg.hwnd = CreateWindowEx(0, &custom_ClassName[0], title_L, 
 			window_style, window_rect.left, window_rect.top, window_rect.right, window_rect.bottom, HWND_DESKTOP, NULL, hInstance, NULL)))
@@ -140,6 +142,8 @@ bool CXWebBrowser::CreateWithUrl(std::string title, std::string url)
 		wc.hInstance = hInstance;
 		wc.lpfnWndProc = WindowProc_Callback;
 		wc.lpszClassName = &custom_ClassName[0];
+		wc.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(101));
+
 		RegisterClassEx(&wc);
 		if ((msg.hwnd = CreateWindowEx(0, &custom_ClassName[0], title_L,
 			window_style, window_rect.left, window_rect.top, window_rect.right, window_rect.bottom, HWND_DESKTOP, NULL, hInstance, NULL)))

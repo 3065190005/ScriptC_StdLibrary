@@ -221,7 +221,7 @@ int main(int args , char** argv)
     auto func = manager->getFuncFromDll("__system___setArgv__");
     manager->callFunc(func, (std::vector<auto_c>*)argv, (auto_c*)&args);
 
-    auto_c hostName, hostIp,space;
+    auto_c hostName, hostIp,released;
 
     while (true) {
         SelectTcp(args, argv);
