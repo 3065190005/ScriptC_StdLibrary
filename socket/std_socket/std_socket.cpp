@@ -47,8 +47,10 @@ namespace {
 }
 
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
+
 		// socket_create		 创建socket		：成功返回socket id，否则返回错误码id
 		EXPORTDLL(socket_create)
 		{

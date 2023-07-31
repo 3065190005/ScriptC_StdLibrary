@@ -13,9 +13,9 @@
 * https://blog.csdn.net/weiyuanzhuo/article/details/52291206
 */
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
-	
+		using namespace AutoMem::Obj;
 	// 文件访问
 		// fopen  打开文件 : 文件名 打开方式 -> 成功返回文件Id 失败返回false
 		EXPORTDLL(fopen);

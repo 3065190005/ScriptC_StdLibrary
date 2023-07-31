@@ -45,8 +45,9 @@ namespace {
 }
 
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
 
 		EXPORTDLL(split) {
 			PARAMS(params);

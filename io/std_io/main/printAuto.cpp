@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <random>
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
 
 		namespace {

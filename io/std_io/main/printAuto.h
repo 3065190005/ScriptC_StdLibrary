@@ -8,8 +8,10 @@
 #include "../Public/AutoObject/LetObject.h"
 
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
+
 		void printAuto_c(auto_c& value);
 		void getParamsBack(std::vector<auto_c> * vec , auto_c* value);
 

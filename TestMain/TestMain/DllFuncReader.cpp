@@ -1,7 +1,9 @@
 #include "DllFuncReader.h"
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+
+        using namespace AutoMem::Obj;
 
         DllFuncReader* DllFuncReader::m_instance = nullptr;
 		int DllFuncReader::m_hasInit = 0;

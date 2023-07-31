@@ -48,8 +48,10 @@ namespace {
 }
 
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
+
 		// thread_create		 创建lua线程		：成功返回按钮id，否则返回null
 		EXPORTDLL(thread_create)
 		{

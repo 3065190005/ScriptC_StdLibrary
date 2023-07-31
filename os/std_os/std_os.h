@@ -13,9 +13,9 @@
 * https://blog.csdn.net/Chnyac/article/details/82745298
 */
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
-		
+		using namespace AutoMem::Obj;
 		// abort	ÖÕÖ¹³ÌÐò : (void) -> (void)
 		EXPORTDLL(abort);
 

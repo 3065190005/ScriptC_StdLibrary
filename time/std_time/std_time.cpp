@@ -108,8 +108,10 @@ namespace {
 }
 
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
+
 		// time		获得时间戳（秒 : （void） -> 返回数字时间戳，否则返回null
 		EXPORTDLL(time) {
 			PARAMS(params);

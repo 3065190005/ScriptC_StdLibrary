@@ -25,8 +25,9 @@ namespace {
 	}
 }
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
 
 		EXPORTDLL(abs) {
 			PARAMS(params);

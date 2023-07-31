@@ -14,8 +14,11 @@
 * https://zhuanlan.zhihu.com/p/351605959
 */
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+
+		using namespace AutoMem::Obj;
+
 		// size		返回数组总个数		：数组 -> 成功返回个数，否则返回null
 		EXPORTDLL(size);
 

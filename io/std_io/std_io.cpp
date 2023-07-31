@@ -13,9 +13,9 @@
 #define PTR(var) *var
 
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
-
+		using namespace AutoMem::Obj;
 		EXPORTDLL(fopen) {
 			RESULT(rets);
 			PARAMS(params);

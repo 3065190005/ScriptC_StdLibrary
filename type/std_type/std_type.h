@@ -8,8 +8,10 @@
 #include "Public/AutoObject/LetManager.h"
 #include "Public/AutoObject/LetObject.h"
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
+
 		// isAlpha    检测字符串是否纯字母		: 是则返回true，否则返回false
 		EXPORTDLL(isAlpha);
 		// isAlnum	  检测字符串是否纯数字		: 是则返回true，否则返回false

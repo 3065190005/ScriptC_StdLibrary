@@ -13,8 +13,9 @@
 * https://blog.csdn.net/qq_42848319/article/details/121055852
 */
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
 		// abs		返回绝对值 : 数字 -> 成功返回数字的绝对值，否则返回null
 		EXPORTDLL(abs);
 

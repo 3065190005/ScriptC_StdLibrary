@@ -38,8 +38,10 @@ namespace {
 	static int global_argc = 0;
 }
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
+
 		EXPORTDLL(abort)
 		{
 			PARAMS(params);
@@ -181,22 +183,22 @@ namespace Cervice {
 
 			switch (value1.getType())
 			{
-			case Cervice::Obj::LetObject::ObjT::null:
+			case AutoMem::Obj::LetObject::ObjT::null:
 				str = "null";
 				break;
-			case Cervice::Obj::LetObject::ObjT::undef:
+			case AutoMem::Obj::LetObject::ObjT::undef:
 				str = "undef";
 				break;
-			case Cervice::Obj::LetObject::ObjT::boolean:
+			case AutoMem::Obj::LetObject::ObjT::boolean:
 				str = "boolean";
 				break;
-			case Cervice::Obj::LetObject::ObjT::number:
+			case AutoMem::Obj::LetObject::ObjT::number:
 				str = "number";
 				break;
-			case Cervice::Obj::LetObject::ObjT::string:
+			case AutoMem::Obj::LetObject::ObjT::string:
 				str = "string";
 				break;
-			case Cervice::Obj::LetObject::ObjT::array:
+			case AutoMem::Obj::LetObject::ObjT::array:
 				if ((value1.getAttribute() & (int)NatureType::cls))
 					str = "interface";
 				else

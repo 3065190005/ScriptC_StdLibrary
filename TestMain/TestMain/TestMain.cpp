@@ -3,7 +3,8 @@
 
 #include <direct.h>
 
-using namespace Cervice::Obj;
+using namespace AutoMem::Obj;
+using namespace ScriptC::Obj;
 
 #define IoS "io__"
 #define OsS "os__"

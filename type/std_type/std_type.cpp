@@ -48,8 +48,10 @@ namespace {
 	}
 }
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
+
 		// isAlpha    检测字符串是否纯字母		: 是则返回true，否则返回false
 		EXPORTDLL(isAlpha) {
 			PARAMS(params);

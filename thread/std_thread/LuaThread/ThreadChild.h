@@ -11,7 +11,7 @@
 #include "../Public/AutoObject/LetObject.h"
 #include "LuaClass.h"
 
-using namespace Cervice::Obj;
+using namespace AutoMem::Obj;
 
 class LuaClass;
 

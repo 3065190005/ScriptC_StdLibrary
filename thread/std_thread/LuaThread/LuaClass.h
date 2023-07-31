@@ -10,7 +10,7 @@
 #include "..\Public\AutoObject\LetManager.h"
 #include "..\Public\AutoObject\LetObject.h"
 
-using namespace Cervice::Obj;
+using namespace AutoMem::Obj;
 
 class LuaClass
 {

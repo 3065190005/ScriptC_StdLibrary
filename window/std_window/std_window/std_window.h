@@ -8,8 +8,10 @@
 #include "Public/AutoObject/LetManager.h"
 #include "Public/AutoObject/LetObject.h"
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
+
 		// msgbox		 创建对话框		：成功返回按钮id，否则返回false
 		EXPORTDLL(msgBox);
 

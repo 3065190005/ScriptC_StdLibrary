@@ -46,9 +46,11 @@ namespace {
 	}
 }
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
-		
+
+		using namespace AutoMem::Obj;
+
 		EXPORTDLL(size) {
 			PARAMS(params);
 			RESULT(rets);

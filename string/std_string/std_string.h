@@ -15,8 +15,9 @@
 * https://www.runoob.com/cprogramming/c-standard-library-string-h.html
 */
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
 		// split	拆分字符串 : 源字符串，分隔符 -> 拆分成功返回数组，否则返回null
 		EXPORTDLL(split);
 

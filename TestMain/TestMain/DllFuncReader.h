@@ -10,8 +10,9 @@
 #include "LetObject/LetManager.h"
 #include "LetObject/LetObject.h"
 
-namespace Cervice {
+namespace ScriptC {
 	namespace Obj {
+		using namespace AutoMem::Obj;
 
 		using funcPtr = void (*)(void*, void*);
 
