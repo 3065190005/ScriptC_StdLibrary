@@ -248,8 +248,14 @@ int main(int args , char** argv)
 * std_direct "direct" 目录库
 * std_regex "regex" 正则库
 * std_socket "socket" 网络库
+* 
+* -- future
+* 额外扩展库
+* std_com "com" Com库
+* std_json "json" Json库
 */
 
+// https://www.runoob.com/python/os-file-methods.html direct 目录库 的参考 将所有有关文件夹的操作函数全部写入
 
 /*
 * 
