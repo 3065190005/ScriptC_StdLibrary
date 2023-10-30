@@ -3,7 +3,7 @@
 
 #define Fname(var) void __system__type__##var##__ (void* param,void* ret)
 #define EXPORTDLL(var) extern "C" _declspec(dllexport) Fname(var)
-#define RESULT(var) auto_c*var = (auto_c*)ret; *var = auto_c(false,false)
+#define RESULT(var) auto_c*var = (auto_c*)ret; *var = auto_c()
 #define PARAMS(var) std::vector<auto_c>* var = (std::vector<auto_c>*)param
 #define PTR(var) (*var)
 

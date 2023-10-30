@@ -2,7 +2,7 @@
 #ifndef __CERVER_STD_STD_ARRAY__
 #define __CERVER_STD_STD_ARRAY__
 
-#define Fname(var) void __system__vec__##var##__ (void* param,void* ret)
+#define Fname(var) void __system__array__##var##__ (void* param,void* ret)
 #define EXPORTDLL(var) extern "C" _declspec(dllimport) Fname(var)
 
 #include "Public/AutoObject/LetManager.h"

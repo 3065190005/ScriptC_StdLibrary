@@ -5,6 +5,7 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestMain", "TestMain.vcxproj", "{DC590D5D-A476-4F96-A1A3-35BF75BB5B19}"
 	ProjectSection(ProjectDependencies) = postProject
+		{4770B335-8F7E-412E-8217-CAAC0AB49D64} = {4770B335-8F7E-412E-8217-CAAC0AB49D64}
 		{4EB66B21-DF54-4F0E-A8FA-D17CEF855DB6} = {4EB66B21-DF54-4F0E-A8FA-D17CEF855DB6}
 		{5570B924-EE6B-499A-B42E-B10069F9E36B} = {5570B924-EE6B-499A-B42E-B10069F9E36B}
 		{85276E91-3248-4EAC-A6FE-908426646113} = {85276E91-3248-4EAC-A6FE-908426646113}
@@ -66,6 +67,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_thread", "..\..\thread\
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_socket", "..\..\socket\std_socket\std_socket.vcxproj", "{C07E1E42-6B84-43C2-AC45-3441395743DB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E6F41A24-4141-4989-B47C-9EFE5F915EAC} = {E6F41A24-4141-4989-B47C-9EFE5F915EAC}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_direct", "..\..\direct\std_direct\std_direct.vcxproj", "{4770B335-8F7E-412E-8217-CAAC0AB49D64}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E6F41A24-4141-4989-B47C-9EFE5F915EAC} = {E6F41A24-4141-4989-B47C-9EFE5F915EAC}
 	EndProjectSection
@@ -174,6 +180,14 @@ Global
 		{C07E1E42-6B84-43C2-AC45-3441395743DB}.Release|x64.Build.0 = Release|x64
 		{C07E1E42-6B84-43C2-AC45-3441395743DB}.Release|x86.ActiveCfg = Release|Win32
 		{C07E1E42-6B84-43C2-AC45-3441395743DB}.Release|x86.Build.0 = Release|Win32
+		{4770B335-8F7E-412E-8217-CAAC0AB49D64}.Debug|x64.ActiveCfg = Debug|x64
+		{4770B335-8F7E-412E-8217-CAAC0AB49D64}.Debug|x64.Build.0 = Debug|x64
+		{4770B335-8F7E-412E-8217-CAAC0AB49D64}.Debug|x86.ActiveCfg = Debug|Win32
+		{4770B335-8F7E-412E-8217-CAAC0AB49D64}.Debug|x86.Build.0 = Debug|Win32
+		{4770B335-8F7E-412E-8217-CAAC0AB49D64}.Release|x64.ActiveCfg = Release|x64
+		{4770B335-8F7E-412E-8217-CAAC0AB49D64}.Release|x64.Build.0 = Release|x64
+		{4770B335-8F7E-412E-8217-CAAC0AB49D64}.Release|x86.ActiveCfg = Release|Win32
+		{4770B335-8F7E-412E-8217-CAAC0AB49D64}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
