@@ -35,13 +35,12 @@ int main(int args , char** argv)
     manager->callFunc(func, (std::vector<auto_c>*)argv, (auto_c*)&args);
 
     auto_c ret;
-    auto_c param1, param2, param3, param4;
+    auto_c param1, param2, param3;
 
     LetTools tools;
 
-    // param1 << "E:\\Virtual";
-    // s_call(func("chdir", DirectS), &ret, param1);
-    // s_call(func("getcwd", DirectS), &ret, param1);
+    param1 << "%Desktop%";
+    s_call(func("expand", DirectS), &ret, param1);
 
 
     return 0;

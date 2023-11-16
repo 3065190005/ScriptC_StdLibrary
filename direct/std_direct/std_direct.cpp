@@ -74,7 +74,7 @@ namespace ScriptC {
 			if (code == 0)
 				PTR(rets) << true;
 			else
-				PTR(rets) << -::abs(code);
+				PTR(rets) << -::fabsl(code);
 			return;
 		}
 
@@ -119,7 +119,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 			return;
@@ -154,7 +154,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());;
+				PTR(rets) << -::fabsl(ex.code().value());;
 				return;
 			}
 			
@@ -191,7 +191,7 @@ namespace ScriptC {
 			}
 			else
 			{
-				PTR(rets) << -::abs(ec.value());;
+				PTR(rets) << -::fabsl(ec.value());;
 			}
 
 			return;
@@ -225,7 +225,7 @@ namespace ScriptC {
 			}
 			else
 			{
-				PTR(rets) << -::abs(ec.value());;
+				PTR(rets) << -::fabsl(ec.value());;
 			}
 
 			return;
@@ -266,7 +266,7 @@ namespace ScriptC {
 			}
 			catch (const std::filesystem::filesystem_error& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 			
@@ -284,7 +284,7 @@ namespace ScriptC {
 				}
 				else
 				{
-					PTR(rets) << -::abs(ec.value());
+					PTR(rets) << -::fabsl(ec.value());
 					return;
 				}
 			}
@@ -322,7 +322,7 @@ namespace ScriptC {
 			}
 			else
 			{
-				PTR(rets) << -::abs(ec.value());
+				PTR(rets) << -::fabsl(ec.value());
 			}
 
 			return;
@@ -356,7 +356,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -402,7 +402,7 @@ namespace ScriptC {
 			}
 			catch(const fs::filesystem_error & ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -423,7 +423,7 @@ namespace ScriptC {
 				PTR(rets)["ctime"] << (numberT)st.st_ctime;
 			}
 			else
-				PTR(rets) << -::abs(code);
+				PTR(rets) << -::fabsl(code);
 			return;
 		}
 
@@ -451,7 +451,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -484,7 +484,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -515,7 +515,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -627,7 +627,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -660,7 +660,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -704,7 +704,7 @@ namespace ScriptC {
 				std::wstring vars_w = kconvert::GbkToUtf8(vars);
 				path = path.substr(0, second);
 
-				wchar_t buffer[MAX_PATH];
+				wchar_t buffer[MAX_PATH]{ 0 };
 				DWORD code = GetEnvironmentVariable(vars_w.c_str(), buffer, MAX_PATH);
 
 				if (code != 0 && buffer != NULL)
@@ -749,7 +749,7 @@ namespace ScriptC {
 				PTR(rets) << (numberT)st.st_atime;
 			}
 			else
-				PTR(rets) << -::abs(code);
+				PTR(rets) << -::fabsl(code);
 			return;
 		}
 
@@ -777,7 +777,7 @@ namespace ScriptC {
 				PTR(rets) << (numberT)st.st_mtime;
 			}
 			else
-				PTR(rets) << -::abs(code);
+				PTR(rets) << -::fabsl(code);
 			return;
 		}
 
@@ -805,7 +805,7 @@ namespace ScriptC {
 				PTR(rets) << (numberT)st.st_ctime;
 			}
 			else
-				PTR(rets) << -::abs(code);
+				PTR(rets) << -::fabsl(code);
 			return;
 		}
 
@@ -833,7 +833,7 @@ namespace ScriptC {
 				PTR(rets) << (numberT)st.st_size;
 			}
 			else
-				PTR(rets) << -::abs(code);
+				PTR(rets) << -::fabsl(code);
 			return;
 		}
 
@@ -863,7 +863,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -899,7 +899,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -935,7 +935,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -970,7 +970,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -1004,7 +1004,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -1045,7 +1045,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
@@ -1082,7 +1082,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << -::abs(ex.code().value());
+				PTR(rets) << -::fabsl(ex.code().value());
 				return;
 			}
 
