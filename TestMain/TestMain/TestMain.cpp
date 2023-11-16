@@ -35,7 +35,7 @@ int main(int args , char** argv)
     manager->callFunc(func, (std::vector<auto_c>*)argv, (auto_c*)&args);
 
     auto_c ret;
-    auto_c param1, param2, param3;
+    auto_c param1, param2, param3, param4;
 
     LetTools tools;
 
@@ -63,7 +63,7 @@ int main(int args , char** argv)
 * std_window "window" 窗口库           √
 * std_thread "thread" 线程库           √
 * std_socket "socket" 网络库           √
-* std_direct "direct" 目录库
+* std_direct "direct" 目录库           √
 * std_regex  "regex"  正则库
 * std_random "random" 随机库
 * 

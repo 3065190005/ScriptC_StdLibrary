@@ -74,7 +74,7 @@ namespace ScriptC {
 			if (code == 0)
 				PTR(rets) << true;
 			else
-				PTR(rets) << code;
+				PTR(rets) << -::abs(code);
 			return;
 		}
 
@@ -119,7 +119,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 			return;
@@ -154,7 +154,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());;
 				return;
 			}
 			
@@ -191,7 +191,7 @@ namespace ScriptC {
 			}
 			else
 			{
-				PTR(rets) << ec.value();
+				PTR(rets) << -::abs(ec.value());;
 			}
 
 			return;
@@ -225,7 +225,7 @@ namespace ScriptC {
 			}
 			else
 			{
-				PTR(rets) << ec.value();
+				PTR(rets) << -::abs(ec.value());;
 			}
 
 			return;
@@ -266,7 +266,7 @@ namespace ScriptC {
 			}
 			catch (const std::filesystem::filesystem_error& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 			
@@ -284,7 +284,7 @@ namespace ScriptC {
 				}
 				else
 				{
-					PTR(rets) << ec.value();
+					PTR(rets) << -::abs(ec.value());
 					return;
 				}
 			}
@@ -322,7 +322,7 @@ namespace ScriptC {
 			}
 			else
 			{
-				PTR(rets) << ec.value();
+				PTR(rets) << -::abs(ec.value());
 			}
 
 			return;
@@ -356,7 +356,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
@@ -402,7 +402,7 @@ namespace ScriptC {
 			}
 			catch(const fs::filesystem_error & ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
@@ -423,7 +423,7 @@ namespace ScriptC {
 				PTR(rets)["ctime"] << (numberT)st.st_ctime;
 			}
 			else
-				PTR(rets) << code;
+				PTR(rets) << -::abs(code);
 			return;
 		}
 
@@ -451,7 +451,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
@@ -484,14 +484,14 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
 			return;
 		}
 
-		// basename 		 返回文件名	：字符串 -> 成功字符串，否则返回null
+		// basename 		 返回文件名	：字符串 -> 成功字符串，否则返回错误码
 		EXPORTDLL(basename)
 		{
 			PARAMS(params);
@@ -515,7 +515,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
@@ -627,7 +627,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
@@ -660,7 +660,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
@@ -725,7 +725,7 @@ namespace ScriptC {
 			return;
 		}
 
-		// getatime 		返回最近访问时间	：字符串 -> 成功数字，否则返回null
+		// getatime 		返回最近访问时间	：字符串 -> 成功数字，否则返回错误码
 		EXPORTDLL(getatime)
 		{
 			PARAMS(params);
@@ -749,11 +749,11 @@ namespace ScriptC {
 				PTR(rets) << (numberT)st.st_atime;
 			}
 			else
-				PTR(rets) << code;
+				PTR(rets) << -::abs(code);
 			return;
 		}
 
-		// getmtime 		返回最近文件修改时间	：字符串 -> 成功数字，否则返回null
+		// getmtime 		返回最近文件修改时间	：字符串 -> 成功数字，否则返回错误码
 		EXPORTDLL(getmtime)
 		{
 			PARAMS(params);
@@ -777,11 +777,11 @@ namespace ScriptC {
 				PTR(rets) << (numberT)st.st_mtime;
 			}
 			else
-				PTR(rets) << code;
+				PTR(rets) << -::abs(code);
 			return;
 		}
 
-		// getctime 		返回文件创建时间	：字符串 -> 成功数字，否则返回null
+		// getctime 		返回文件创建时间	：字符串 -> 成功数字，否则返回错误码
 		EXPORTDLL(getctime)
 		{
 			PARAMS(params);
@@ -805,11 +805,11 @@ namespace ScriptC {
 				PTR(rets) << (numberT)st.st_ctime;
 			}
 			else
-				PTR(rets) << code;
+				PTR(rets) << -::abs(code);
 			return;
 		}
 
-		// getsize 		返回文件大小	：字符串 -> 成功数字，否则返回null
+		// getsize 		返回文件大小	：字符串 -> 成功数字，否则返回错误码
 		EXPORTDLL(getsize)
 		{
 			PARAMS(params);
@@ -833,7 +833,7 @@ namespace ScriptC {
 				PTR(rets) << (numberT)st.st_size;
 			}
 			else
-				PTR(rets) << code;
+				PTR(rets) << -::abs(code);
 			return;
 		}
 
@@ -863,7 +863,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
@@ -899,7 +899,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
@@ -935,14 +935,14 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
 			return;
 		}
 
-		// normcase 		将路径字符串的大写和正斜杠转换	：字符串 -> 成功字符串，否则返回null
+		// normcase 		将路径字符串的大写和正斜杠转换	：字符串 -> 成功字符串，否则返回错误码
 		EXPORTDLL(normcase)
 		{
 			PARAMS(params);
@@ -970,14 +970,14 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
 			return;
 		}
 
-		// normpath 		规范路径字符串形式	：字符串 -> 成功字符串，否则返回null
+		// normpath 		规范路径字符串形式	：字符串 -> 成功字符串，否则返回错误码
 		EXPORTDLL(normpath)
 		{
 			PARAMS(params);
@@ -1004,7 +1004,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
@@ -1012,7 +1012,7 @@ namespace ScriptC {
 		}
 
 
-		// pathinfo 		获得相对信息	：字符串 -> 成功数组，否则返回null
+		// pathinfo 		获得相对信息	：字符串 -> 成功数组，否则返回错误码
 		EXPORTDLL(info)
 		{
 			PARAMS(params);
@@ -1045,7 +1045,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 
@@ -1082,7 +1082,7 @@ namespace ScriptC {
 			}
 			catch (std::filesystem::filesystem_error const& ex)
 			{
-				PTR(rets) << ex.code().value();
+				PTR(rets) << -::abs(ex.code().value());
 				return;
 			}
 

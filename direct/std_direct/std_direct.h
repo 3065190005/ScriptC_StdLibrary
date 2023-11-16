@@ -70,16 +70,16 @@ namespace ScriptC {
 		// expand 		根据环境变量的值替换%字符串%值	：字符串 -> 成功字符串，否则返回错误码
 		EXPORTDLL(expand);
 
-		// getatime 		返回最近访问时间	：字符串 -> 成功数字，否则返回null
+		// getatime 		返回最近访问时间	：字符串 -> 成功数字，否则返回错误码
 		EXPORTDLL(getatime);
 
-		// getmtime 		返回最近文件修改时间	：字符串 -> 成功数字，否则返回null
+		// getmtime 		返回最近文件修改时间	：字符串 -> 成功数字，否则返回错误码
 		EXPORTDLL(getmtime);
 
-		// getctime 		返回文件创建时间	：字符串 -> 成功数字，否则返回null
+		// getctime 		返回文件创建时间	：字符串 -> 成功数字，否则返回错误码
 		EXPORTDLL(getctime);
 
-		// getsize 		返回文件大小	：字符串 -> 成功数字，否则返回null
+		// getsize 		返回文件大小	：字符串 -> 成功数字，否则返回错误码
 		EXPORTDLL(getsize);
 
 		// isabs 			判断是否为绝对路径	：字符串 -> 成功true，否则返回false
@@ -91,13 +91,13 @@ namespace ScriptC {
 		// isdir 			判断路径是否为目录	：字符串 -> 成功true，否则返回false
 		EXPORTDLL(isdir);
 
-		// normcase 		将路径字符串的大写和正斜杠转换	：字符串 -> 成功字符串，否则返回null
+		// normcase 		将路径字符串的大写和正斜杠转换	：字符串 -> 成功字符串，否则返回错误码
 		EXPORTDLL(normcase);
 
-		// normpath 		规范路径字符串形式	：字符串 -> 成功字符串，否则返回null
+		// normpath 		规范路径字符串形式	：字符串 -> 成功字符串，否则返回错误码
 		EXPORTDLL(normpath);
 
-		// info 		获得相对信息	：字符串 -> 成功数组，否则返回null
+		// info 		获得相对信息	：字符串 -> 成功数组，否则返回错误码
 		EXPORTDLL(info);
 
 		// samefile 		判断目录或文件是否相同 ：字符串|字符串 -> 成功返回数字，否则返回错误码
