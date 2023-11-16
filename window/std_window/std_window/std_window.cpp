@@ -429,7 +429,7 @@ namespace ScriptC {
 			RESULT(rets);
 
 			if(control_hwnd == NULL)
-				control_hwnd = GetForegroundWindow();
+				control_hwnd = GetConsoleWindow();
 			
 			if (!control_hwnd) {
 				PTR(rets) << false;
@@ -447,6 +447,9 @@ namespace ScriptC {
 		{
 			PARAMS(params);
 			RESULT(rets);
+
+			if (control_hwnd == NULL)
+				control_hwnd = GetConsoleWindow();
 
 			if (!control_hwnd) {
 				PTR(rets) << false;
