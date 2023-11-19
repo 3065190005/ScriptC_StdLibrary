@@ -56,12 +56,12 @@ namespace ScriptC {
 
 
 
-		// hideControl    隐藏控制台		: 成功则返回true，否则返回false
-		EXPORTDLL(hideControl);
+		// hideConsole    隐藏控制台		: 成功则返回true，否则返回false
+		EXPORTDLL(hideConsole);
 
 
-		// showControl    显示控制台		: 成功则返回true，否则返回false
-		EXPORTDLL(showControl);
+		// showConsole    显示控制台		: 成功则返回true，否则返回false
+		EXPORTDLL(showConsole);
 
 	}
 }

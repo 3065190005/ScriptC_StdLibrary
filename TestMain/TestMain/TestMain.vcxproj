@@ -122,6 +122,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
     </Link>
     <PreBuildEvent>
       <Command>cd LetObject
@@ -152,6 +154,8 @@ copy /Y E:\VsPro\CerviceScript\STD\CompileDLL\debug\*.* E:\VsPro\CerviceScript\S
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
     </Link>
     <PreBuildEvent>
       <Command>cd LetObject

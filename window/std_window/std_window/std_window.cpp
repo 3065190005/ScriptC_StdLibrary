@@ -48,6 +48,23 @@ namespace {
 	}
 
 	HWND control_hwnd = NULL;
+
+	HWND GetConsoleHwnd(void)
+	{
+#define MY_BUFSIZE 1024
+		HWND hwndFound;
+		wchar_t pszNewWindowTitle[MY_BUFSIZE];
+		wchar_t pszOldWindowTitle[MY_BUFSIZE];
+		GetConsoleTitle(pszOldWindowTitle, MY_BUFSIZE);
+		wsprintf(pszNewWindowTitle, L"%d/%d",
+			GetTickCount64(),
+			GetCurrentProcessId());
+		SetConsoleTitle(pszNewWindowTitle);
+		Sleep(40);
+		hwndFound = FindWindow(NULL, pszNewWindowTitle);
+		SetConsoleTitle(pszOldWindowTitle);
+		return(hwndFound);
+	}
 }
 
 
@@ -422,14 +439,14 @@ namespace ScriptC {
 		}
 
 
-		// hideControl    隐藏控制台		: 成功则返回true，否则返回false
-		EXPORTDLL(hideControl)
+		// hideConsole    隐藏控制台		: 成功则返回true，否则返回false
+		EXPORTDLL(hideConsole)
 		{
 			PARAMS(params);
 			RESULT(rets);
 
 			if(control_hwnd == NULL)
-				control_hwnd = GetConsoleWindow();
+				control_hwnd = GetConsoleHwnd();
 			
 			if (!control_hwnd) {
 				PTR(rets) << false;
@@ -442,14 +459,14 @@ namespace ScriptC {
 		}
 
 
-		// showControl    显示控制台		: 成功则返回true，否则返回false
-		EXPORTDLL(showControl)
+		// showConsole    显示控制台		: 成功则返回true，否则返回false
+		EXPORTDLL(showConsole)
 		{
 			PARAMS(params);
 			RESULT(rets);
 
 			if (control_hwnd == NULL)
-				control_hwnd = GetConsoleWindow();
+				control_hwnd = GetConsoleHwnd();
 
 			if (!control_hwnd) {
 				PTR(rets) << false;

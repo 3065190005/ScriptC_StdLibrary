@@ -40,8 +40,9 @@ int main(int args , char** argv)
     LetTools tools;
 
     param1 << "%Desktop%";
-    s_call(func("expand", DirectS), &ret, param1);
-
+    s_call(func("hideConsole", WindowS), &ret, param1);
+    Sleep(5000);
+    s_call(func("showConsole", WindowS), &ret, param1);
 
     return 0;
 }
