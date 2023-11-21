@@ -36,13 +36,11 @@ int main(int args , char** argv)
 
     auto_c ret;
     ret << false;
-    auto_c param1, param2, param3;
+    auto_c param1, param2;
 
     LetTools tools;
 
     param1 << "%Desktop%";
-    param2 << "msgbox";
-    param3 << "title";
     s_call(func("hideConsole", WindowS), &ret, param1);
     s_call(func("showConsole", WindowS), &ret, param1);
 

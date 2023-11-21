@@ -60,6 +60,7 @@ namespace {
 			GetTickCount64(),
 			GetCurrentProcessId());
 		SetConsoleTitle(pszNewWindowTitle);
+		::Sleep(40);
 		hwndFound = FindWindow(NULL, pszNewWindowTitle);
 		SetConsoleTitle(pszOldWindowTitle);
 		if (hwndFound)
