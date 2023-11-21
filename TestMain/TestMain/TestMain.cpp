@@ -12,7 +12,7 @@ using namespace ScriptC::Obj;
 #define ArrayS "array__"
 #define TimS "time__"
 #define TypS "type__"
-#define WindowS "window__"
+#define DialogS "dialog__"
 #define ThreadS "thread__"
 #define SocketS "socket__"
 #define DirectS "direct__"
@@ -36,13 +36,14 @@ int main(int args , char** argv)
 
     auto_c ret;
     ret << false;
-    auto_c param1, param2;
+    auto_c param1, title, msgbox, button;
 
     LetTools tools;
+    title << "title";
+    msgbox << "https://www.baidu.com/";
 
-    param1 << "%Desktop%";
-    s_call(func("hideConsole", WindowS), &ret, param1);
-    s_call(func("showConsole", WindowS), &ret, param1);
+    s_call(func("hideConsole", DialogS), &ret, param1);
+    s_call(func("edgeUrl", DialogS), &ret, title, msgbox);
 
     return 0;
 }

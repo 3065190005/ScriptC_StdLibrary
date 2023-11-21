@@ -6,7 +6,7 @@
 #include "webbowser.h"
 #include "webview2.h"
 
-#define Fname(var) void __system__window__##var##__ (void* param,void* ret)
+#define Fname(var) void __system__dialog__##var##__ (void* param,void* ret)
 #define EXPORTDLL(var) extern "C" _declspec(dllexport) Fname(var)
 #define RESULT(var) auto_c*var = (auto_c*)ret; *var = auto_c()
 #define PARAMS(var) std::vector<auto_c>* var = (std::vector<auto_c>*)param
@@ -52,19 +52,21 @@ namespace {
 	HWND GetConsoleHwnd(void)
 	{
 #define MY_BUFSIZE 1024
-		HWND hwndFound;
+		HWND hwndFound = NULL;
 		wchar_t pszNewWindowTitle[MY_BUFSIZE];
 		wchar_t pszOldWindowTitle[MY_BUFSIZE];
-		GetConsoleTitle(pszOldWindowTitle, MY_BUFSIZE);
+		DWORD faild = GetConsoleTitle(pszOldWindowTitle, MY_BUFSIZE);
+		if (faild == 0)
+			return NULL;
+
 		wsprintf(pszNewWindowTitle, L"%d/%d",
 			GetTickCount64(),
 			GetCurrentProcessId());
 		SetConsoleTitle(pszNewWindowTitle);
-		::Sleep(40);
-		hwndFound = FindWindow(NULL, pszNewWindowTitle);
+		while(!hwndFound)
+			hwndFound = FindWindow(NULL, pszNewWindowTitle);
 		SetConsoleTitle(pszOldWindowTitle);
-		if (hwndFound)
-			::UpdateWindow(hwndFound);
+		::UpdateWindow(hwndFound);
 		return(hwndFound);
 	}
 }
@@ -262,7 +264,7 @@ namespace ScriptC {
 		}
 
 
-		EXPORTDLL(htmlBox) {
+		EXPORTDLL(ieHtml) {
 			PARAMS(params);
 			RESULT(rets);
 
@@ -285,7 +287,7 @@ namespace ScriptC {
 		}
 
 
-		EXPORTDLL(urlBox) {
+		EXPORTDLL(ieUrl) {
 			PARAMS(params);
 			RESULT(rets);
 
@@ -310,8 +312,8 @@ namespace ScriptC {
 
 
 
-		// htmlView		 创建webview2 html窗口	: 成功返回true，否则返回false
-		EXPORTDLL(htmlView)
+		// edgeHtml		 创建webview2 html窗口	: 成功返回true，否则返回false
+		EXPORTDLL(edgeHtml)
 		{
 			PARAMS(params);
 			RESULT(rets);
@@ -335,8 +337,8 @@ namespace ScriptC {
 		}
 
 
-		// urlView		 创建webview2 url窗口	: 成功返回true，否则返回false
-		EXPORTDLL(urlView)
+		// edgeUrl		 创建webview2 url窗口	: 成功返回true，否则返回false
+		EXPORTDLL(edgeUrl)
 		{
 			PARAMS(params);
 			RESULT(rets);

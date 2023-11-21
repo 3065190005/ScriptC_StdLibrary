@@ -1,8 +1,8 @@
 #pragma once
-#ifndef _CERVER_STD_STD_WINDOW_
-#define _CERVER_STD_STD_WINDOW_
+#ifndef _CERVER_STD_STD_DIALOG_
+#define _CERVER_STD_STD_DIALOG_
 
-#define Fname(var) void __system__window__##var##__ (void* param,void* ret)
+#define Fname(var) void __system__dialog__##var##__ (void* param,void* ret)
 #define EXPORTDLL(var) extern "C" _declspec(dllimport) Fname(var)
 
 #include "Public/AutoObject/LetManager.h"
@@ -23,20 +23,20 @@ namespace ScriptC {
 		EXPORTDLL(bowserBox);
 
 
-		// htmlBox		 创建html窗口	: 成功返回true，否则返回false
-		EXPORTDLL(htmlBox);
+		// ieHtml		 创建html窗口	: 成功返回true，否则返回false
+		EXPORTDLL(ieHtml);
 
 
-		// urlBox		 创建url窗口	: 成功返回true，否则返回false
-		EXPORTDLL(urlBox);
+		// ieUrl		 创建url窗口	: 成功返回true，否则返回false
+		EXPORTDLL(ieUrl);
 
 
-		// htmlView		 创建webview2 html窗口	: 成功返回true，否则返回false
-		EXPORTDLL(htmlView);
+		// edgeHtml		 创建webview2 html窗口	: 成功返回true，否则返回false
+		EXPORTDLL(edgeHtml);
 
 
-		// urlView		 创建webview2 url窗口	: 成功返回true，否则返回false
-		EXPORTDLL(urlView);
+		// edgeUrl		 创建webview2 url窗口	: 成功返回true，否则返回false
+		EXPORTDLL(edgeUrl);
 
 
 		// setWebStyle   设置样式	: 成功返回true，否则返回false
