@@ -35,13 +35,15 @@ int main(int args , char** argv)
     manager->callFunc(func, (std::vector<auto_c>*)argv, (auto_c*)&args);
 
     auto_c ret;
+    ret << false;
     auto_c param1, param2, param3;
 
     LetTools tools;
 
     param1 << "%Desktop%";
+    param2 << "msgbox";
+    param3 << "title";
     s_call(func("hideConsole", WindowS), &ret, param1);
-    Sleep(5000);
     s_call(func("showConsole", WindowS), &ret, param1);
 
     return 0;
