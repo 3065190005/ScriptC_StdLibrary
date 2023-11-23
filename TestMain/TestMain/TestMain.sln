@@ -5,8 +5,8 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestMain", "TestMain.vcxproj", "{DC590D5D-A476-4F96-A1A3-35BF75BB5B19}"
 	ProjectSection(ProjectDependencies) = postProject
-		{DF7A951D-2CFF-4C5F-9487-4751BA720608} = {DF7A951D-2CFF-4C5F-9487-4751BA720608}
 		{E6F41A24-4141-4989-B47C-9EFE5F915EAC} = {E6F41A24-4141-4989-B47C-9EFE5F915EAC}
+		{F567BA62-12B4-4B6B-94FE-120E6CEC92AA} = {F567BA62-12B4-4B6B-94FE-120E6CEC92AA}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_io", "..\..\io\std_io\std_io.vcxproj", "{F567BA62-12B4-4B6B-94FE-120E6CEC92AA}"
@@ -46,7 +46,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_type", "..\..\type\std_
 		{E6F41A24-4141-4989-B47C-9EFE5F915EAC} = {E6F41A24-4141-4989-B47C-9EFE5F915EAC}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_window", "..\..\window\std_window\std_window\std_window.vcxproj", "{DF7A951D-2CFF-4C5F-9487-4751BA720608}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_dialog", "..\..\window\std_window\std_window\std_window.vcxproj", "{DF7A951D-2CFF-4C5F-9487-4751BA720608}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E6F41A24-4141-4989-B47C-9EFE5F915EAC} = {E6F41A24-4141-4989-B47C-9EFE5F915EAC}
 	EndProjectSection

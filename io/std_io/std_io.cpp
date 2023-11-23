@@ -428,7 +428,7 @@ namespace ScriptC {
 			auto_c* rets = (auto_c*)ret;
 			
 			std::string str;
-			std::cin >> str;
+			std::getline(std::cin, str);
 
 			*rets = auto_c(false, false);
 			(*rets) << str;

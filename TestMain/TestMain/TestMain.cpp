@@ -36,14 +36,9 @@ int main(int args , char** argv)
 
     auto_c ret;
     ret << false;
-    auto_c param1, title, msgbox, button;
+    auto_c param1, title;
 
-    LetTools tools;
-    title << "title";
-    msgbox << "https://www.baidu.com/";
-
-    s_call(func("hideConsole", DialogS), &ret, param1);
-    s_call(func("edgeUrl", DialogS), &ret, title, msgbox);
+    s_call(func("input", IoS), &ret, param1);
 
     return 0;
 }
