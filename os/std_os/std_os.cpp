@@ -1,6 +1,8 @@
 #include "std_os.h"
 #include "QuickLib/quicklib.h"
 
+#include <vector>
+
 #ifdef _WIN32
 #include <Windows.h>
 #else
@@ -34,8 +36,8 @@ namespace {
 }
 
 namespace {
-	static char** global_argv = nullptr;
-	static int global_argc = 0;
+	static char** global_argv;
+	static size_t global_argc = 0;
 }
 
 namespace ScriptC {
@@ -59,7 +61,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
-				exit(-1);
+				throw("Vm : function exit need ¡°number¡±");
 			}
 			numberT code = 0;
 			value1 >> code;
@@ -95,8 +97,12 @@ namespace ScriptC {
 				return;
 			}
 			default:
-				return;
-				break;
+				{
+					LetTools tools;
+					throw("Vm : function str unable to convert ¡°" + tools.ObjTToStr(value1.getType()) + "¡±");
+					return;
+					break;
+				}
 			}
 		}
 
@@ -130,8 +136,12 @@ namespace ScriptC {
 				return;
 			}
 			default:
+			{
+				LetTools tools;
+				throw("Vm : function number unable to convert ¡°" + tools.ObjTToStr(value1.getType()) + "¡±");
 				return;
 				break;
+			}
 			}
 		}
 
@@ -164,12 +174,16 @@ namespace ScriptC {
 					has = true;
 				}
 
-				PTR(rets) << ret;
+				PTR(rets) << has;
 				return;
 			}
 			default:
+			{
+				LetTools tools;
+				throw("Vm : function bool unable to convert ¡°" + tools.ObjTToStr(value1.getType()) + "¡±");
 				return;
 				break;
+			}
 			}
 		}
 
@@ -205,7 +219,12 @@ namespace ScriptC {
 					str = "array";
 				break;
 			default:
+			{
+				LetTools tools;
+				throw("Vm : function type unknown type of ¡°" + tools.ObjTToStr(value1.getType()) + "¡±");
+				return;
 				break;
+			}
 			}
 
 			PTR(rets) << str;
@@ -218,7 +237,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string) {
-				return;
+				throw("Vm : function hex need ¡°string¡±");
 			}
 
 			auto isNumb = [&](char chr) { if (chr >= '0' && chr <= '9') return true; return false; };
@@ -240,11 +259,12 @@ namespace ScriptC {
 						numb += (numberT)chr - 0x37;
 						continue;
 					}
+					throw("Vm : function hex string needs to be in the range of ¡°0 - F¡±");
 					return;
 				}
 			}
 			else {
-				return;
+				throw("Vm : function hex needs to start with the ¡°0x¡± string");
 			}
 
 			PTR(rets) << numb;
@@ -256,7 +276,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string) {
-				return;
+				throw("Vm : function oct need ¡°string¡±");
 			}
 
 			auto isNumb = [&](char chr) { if (chr >= '0' && chr <= '7') return true; return false; };
@@ -273,10 +293,12 @@ namespace ScriptC {
 						numb += (numberT)chr - 0x30;
 						continue;
 					}
+					throw("Vm : function oct string needs to be in the range of ¡°0 - 7¡±");
 					return;
 				}
 			}
 			else {
+				throw("Vm : function oct needs to start with the ¡°0O¡± string");
 				return;
 			}
 
@@ -289,7 +311,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string) {
-				return;
+				throw("Vm : function bin need ¡°string¡±");
 			}
 
 			auto isNumb = [&](char chr) { if (chr >= '0' && chr <= '1') return true; return false; };
@@ -306,11 +328,13 @@ namespace ScriptC {
 						numb += (numberT)chr - 0x30;
 						continue;
 					}
+
+					throw("Vm : function bin string must be a number ¡°0 or 1¡±");
 					return;
 				}
 			}
 			else {
-				return;
+				throw("Vm : function bin needs to start with the ¡°0B¡± string");
 			}
 
 			PTR(rets) << numb;
@@ -322,7 +346,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string) {
-				return;
+				throw("Vm : function getenv need ¡°string¡±");
 			}
 			char pathTxt[10240] = { 0 };
 			char* ptr_pathTxt = pathTxt;
@@ -355,7 +379,7 @@ namespace ScriptC {
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string) {
-				return;
+				throw("Vm : function putenv need ¡°string, string¡±");
 			}
 
 			std::string name = LetObject::cast<std::string>(value1);
@@ -374,7 +398,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string) {
-				return;
+				throw("Vm : function system need ¡°string¡±");
 			}
 
 			std::string commands = LetObject::cast<std::string>(value1);
@@ -393,7 +417,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
-				return;
+				throw("Vm : function sleep need ¡°number¡±");
 			}
 
 			numberT commands = LetObject::cast<numberT>(value1);
@@ -404,6 +428,7 @@ namespace ScriptC {
 		}
 
 		EXPORTDLL(argv) {
+			PARAMS(params);
 			RESULT(rets);
 
 			for (auto i = 0; i < global_argc; i++) {
@@ -416,7 +441,8 @@ namespace ScriptC {
 		extern "C" _declspec(dllexport)
 			void __system___setArgv__(void* param, void* count) {
 			global_argv = (char**)param;
-			global_argc = *(int*)count;
+			global_argc = *(int *)count;
+			
 			return;
 		}
 	}
