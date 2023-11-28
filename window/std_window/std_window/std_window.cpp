@@ -12,6 +12,8 @@
 #define PARAMS(var) std::vector<auto_c>* var = (std::vector<auto_c>*)param
 #define PTR(var) (*var)
 
+#define THROWINFO(fun_name, ...) "Vm : function " #fun_name " param need ¡°"#__VA_ARGS__"¡±"
+
 
 namespace {
 	class Funcs {
@@ -127,7 +129,7 @@ std::string window_InputBox(std::string title,std::string txt) {
 	MultiByteToWideChar(CP_ACP, 0, title.c_str(), 254, m_wchar, len);
 	m_wchar[254] = '\0';
 	
-	hwnd = CreateWindow(szAppName, L"ScriptC", WS_OVERLAPPEDWINDOW,
+	hwnd = CreateWindow(szAppName, m_wchar, WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, CW_USEDEFAULT,
 		640, 480,
 		NULL, NULL, hInstance, NULL);
@@ -210,7 +212,7 @@ namespace ScriptC {
 				value2.getType() != LetObject::ObjT::string||
 				value1.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(msgBox, string, string, number));
 				return;
 			}
 
@@ -237,7 +239,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(editBox, string, string));
 				return;
 			}
 
@@ -274,7 +276,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(ieHtml, string, string));
 				return;
 			}
 
@@ -297,7 +299,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(ieUrl, string, string));
 				return;
 			}
 
@@ -324,7 +326,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(edgeHtml, string, string));
 				return;
 			}
 
@@ -349,7 +351,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(edgeUrl, string, string));
 				return;
 			}
 
@@ -372,7 +374,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(setWebBoxStyle, number));
 				return;
 			}
 
@@ -412,7 +414,7 @@ namespace ScriptC {
 				value3.getType() != LetObject::ObjT::number||
 				value4.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(setWebBoxSize, number, number, number, number));
 				return;
 			}
 

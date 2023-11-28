@@ -28,6 +28,87 @@ void s_call(std::string name, auto_c* ret, Args... Ts) {
     manager->callFunc(func, &param, ret);
 }
 
+void DialogTest()
+{
+	auto_c ret, param1, param2, param3, param4;
+	//msgbox		 创建对话框		：成功返回按钮id，否则返回false
+	//EXPORTDLL(msgBox);
+	param1 << "Text MsgBox";
+	param2 << "title MsgBox";
+	param3 << 1;
+	s_call(func("msgBox", DialogS), &ret, param1, param2, param3);
+
+	//edgeBox		 创建输入框		：成功返回输入文本，否则返回false
+	//EXPORTDLL(editBox);
+	param1 << "Text editBox";
+	param2 << "title editBox";
+	s_call(func("editBox", DialogS), &ret, param1, param2);
+
+	//bowserBox	 创建选择框		: 成功返回路径，否则返回false
+	//EXPORTDLL(bowserBox);
+	s_call(func("bowserBox", DialogS), &ret);
+
+
+	//ieHtml		 创建html窗口	: 成功返回true，否则返回false
+	//EXPORTDLL(ieHtml);
+	param1 << "ieHtml Test";
+	param2 << "ieHtml Title";
+	s_call(func("ieHtml", DialogS), &ret, param1, param2);
+
+
+	//ieUrl		 创建url窗口	: 成功返回true，否则返回false
+	//EXPORTDLL(ieUrl);
+	param1 << "ieUrl Test";
+	param2 << "ieUrl Title";
+	s_call(func("ieUrl", DialogS), &ret, param1, param2);
+
+
+	//edgeHtml		 创建webview2 html窗口	: 成功返回true，否则返回false
+	//EXPORTDLL(edgeHtml);
+	param1 << "edgeHtml Test";
+	param2 << "edgeHtml Title";
+	s_call(func("edgeHtml", DialogS), &ret, param1, param2);
+
+
+	//edgeUrl		 创建webview2 url窗口	: 成功返回true，否则返回false
+	//EXPORTDLL(edgeUrl);
+	param1 << "edgeUrl Test";
+	param2 << "edgeUrl Title";
+	s_call(func("edgeUrl", DialogS), &ret, param1, param2);
+
+	//setWebStyle   设置样式	: 成功返回true，否则返回false
+	//EXPORTDLL(setWebBoxStyle);
+	param1 << 0;
+	s_call(func("setWebBoxStyle", DialogS), &ret, param1);
+
+
+	//getWebStyle   获取样式	: 成功返回numberT，否则返回false
+	//EXPORTDLL(getWebBoxStyle);
+	s_call(func("getWebBoxStyle", DialogS), &ret);
+
+
+	//setWebBoxSize  设置大小	: 成功返回true，否则返回false
+	//EXPORTDLL(setWebBoxSize);
+	param1 << 0;
+	param2 << 0;
+	param3 << 1024;
+	param4 << 768;
+	s_call(func("setWebBoxSize", DialogS), &ret, param1, param2, param3, param4);
+
+	//getWebBoxSize   获取大小	: 成功返回array，否则返回false
+	//EXPORTDLL(getWebBoxSize);
+	s_call(func("getWebBoxSize", DialogS), &ret);
+
+	//hideConsole    隐藏控制台		: 成功则返回true，否则返回false
+	//EXPORTDLL(hideConsole);
+	s_call(func("hideConsole", DialogS), &ret);
+
+
+	//showConsole    显示控制台		: 成功则返回true，否则返回false
+	//EXPORTDLL(showConsole);
+	s_call(func("showConsole", DialogS), &ret);
+}
+
 void TimeTest()
 {
 	auto_c ret, param1, param2;
@@ -791,7 +872,7 @@ bool initConsoleArgv(int args, char** argv)
 int main(int args , char** argv)
 {
 	initConsoleArgv(args, argv);
-	auto_c rets, param1, param2, param3, param4, param5, param6, param7, param8;
+	auto_c rets, param1, param2, param3, param4, param5, param6, param7, param8, param9;
     
 	param1[0] << "EHllo Number";
 	param1["Hello"] << 789456;
@@ -806,6 +887,7 @@ int main(int args , char** argv)
 	// StringTest();
 	// ArrayTest();
 	// TimeTest();
+	DialogTest();
 
     return 0;
 }
