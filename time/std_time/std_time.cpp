@@ -7,6 +7,8 @@
 #define PARAMS(var) std::vector<auto_c>* var = (std::vector<auto_c>*)param
 #define PTR(var) (*var)
 
+#define THROWINFO(fun_name, ...) "Vm : function " #fun_name " param need ¡°"#__VA_ARGS__"¡±"
+
 #include <algorithm>
 #include <random>
 #include <chrono>
@@ -166,6 +168,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number ||
 				value2.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(cast, number, number));
 				return;
 			}
 
@@ -220,6 +223,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number ||
 				value2.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(castAsM, number, number));
 				return;
 			}
 
@@ -294,7 +298,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
-				PTR(rets) << false;
+				throw(THROWINFO(start, number));
 				return;
 			}
 
@@ -333,7 +337,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
-				PTR(rets) << false;
+				throw(THROWINFO(pause, number));
 				return;
 			}
 
@@ -372,6 +376,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw(THROWINFO(over, number));
 				return;
 			}
 
@@ -411,6 +416,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw(THROWINFO(overAsM, number));
 				return;
 			}
 
@@ -467,7 +473,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
-				PTR(rets) << false;
+				throw(THROWINFO(toDate, number));
 				return;
 			}
 
@@ -492,7 +498,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
-				PTR(rets) << false;
+				throw(THROWINFO(toDateAsM, number));
 				return;
 			}
 

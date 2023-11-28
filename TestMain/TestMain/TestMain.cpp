@@ -24,8 +24,83 @@ void s_call(std::string name, auto_c* ret, Args... Ts) {
     DllFuncReader* manager = DllFuncReader::getInstance();
     auto func = manager->getFuncFromDll(name.c_str());
     std::vector<auto_c> param;
-    auto space = { (param.push_back(Ts),0)... };
+    std::initializer_list<int> space = { (param.push_back(Ts),0)... };
     manager->callFunc(func, &param, ret);
+}
+
+void TimeTest()
+{
+	auto_c ret, param1, param2;
+	// time		获得时间戳（秒 : （void） -> 返回数字时间戳，否则返回null
+	//EXPORTDLL(time);
+	s_call(func("time", TimS), &ret);
+
+	// timeAsM	获得时间戳（毫秒 : （void） -> 返回数字时间戳，否则返回null
+	//EXPORTDLL(timeAsM);
+	s_call(func("timeAsM", TimS), &ret);
+
+	// clock	获得程序运行时间（秒 : （void） -> 返回数字时间，否则返回null
+	//EXPORTDLL(clock);
+	s_call(func("clock", TimS), &ret);
+
+	// clockAsM	获得程序运行时间（毫秒 : （void） -> 返回数字时间，否则返回null
+	//EXPORTDLL(clockAsM);
+	s_call(func("clockAsM", TimS), &ret);
+
+	// cast 将秒转换成某个时间 (6年，5月，4日，3时，2分，1秒 0毫秒 : 源数字，类型 -> 转换成功返回数字，否则返回null
+	//EXPORTDLL(cast);
+	param1 << 1701176623;
+	param2 << 4;
+	s_call(func("cast", TimS), &ret, param1, param2);
+
+	// castAsM 将毫秒转换成某个时间 (6年，5月，4日，3时，2分，1秒 0毫秒 : 源数字，类型 -> 转换成功返回数字，否则返回null
+	//EXPORTDLL(castAsM);
+
+	param1 << 1701176622000;
+	param2 << 6;
+	s_call(func("castAsM", TimS), &ret, param1, param2);
+
+	// join 创建一个计时器 : (void) -> 设置成功返回数字计时器Id，否则返回null
+	//EXPORTDLL(join);
+	s_call(func("join", TimS), &ret, param1, param2);
+
+	// start 继续一个计时器 ： 数字计时器id -> 继续成功返回true,否则返回false
+	//EXPORTDLL(start);
+
+	param1 = ret;
+	s_call(func("start", TimS), &ret, param1);
+
+	// pause 暂停一个计时器 ： 数字计时器id -> 暂停成功返回true,否则返回false
+	//EXPORTDLL(pause);
+
+	s_call(func("pause", TimS), &ret, param1);
+
+	// over 获取一个计时器 ： 数字计时器id -> 成功返回计数秒，否则返回null
+	//EXPORTDLL(over);
+
+	s_call(func("over", TimS), &ret, param1);
+
+	// overAsM 获取一个计时器 ： 数字计时器id -> 成功返回计数毫秒，否则返回null
+	//EXPORTDLL(overAsM);
+	s_call(func("overAsM", TimS), &ret, param1);
+
+	// date 获取系统日期 ： (void) -> 成功返回日期字符串，否则返回null
+	//EXPORTDLL(date);
+	s_call(func("date", TimS), &ret);
+
+	// dateAsM 获取系统日期 (毫秒 ： (void) -> 成功返回日期字符串，否则返回null
+	//EXPORTDLL(dateAsM);
+	s_call(func("dateAsM", TimS), &ret);
+
+	// toDate 将秒时间戳转换成日期 ： 数字秒时间戳 -> 成功返回日期字符串，否则返回null
+	//EXPORTDLL(toDate);
+	param1 << 1701176622;
+	s_call(func("toDate", TimS), &ret, param1);
+
+	// toDateAsM 将毫秒时间戳转换成日期 ： 数字毫秒时间戳 -> 成功返回日期字符串，否则返回null
+	//EXPORTDLL(toDateAsM);
+	param1 << "1701176622000";
+	s_call(func("toDateAsM", TimS), &ret, param1);
 }
 
 void ArrayTest()
@@ -716,7 +791,7 @@ bool initConsoleArgv(int args, char** argv)
 int main(int args , char** argv)
 {
 	initConsoleArgv(args, argv);
-	auto_c rets, param1, param2, param3, param4, param5, param6, param7;
+	auto_c rets, param1, param2, param3, param4, param5, param6, param7, param8;
     
 	param1[0] << "EHllo Number";
 	param1["Hello"] << 789456;
@@ -729,7 +804,8 @@ int main(int args , char** argv)
 	// OsTest();
 	// MathTest();
 	// StringTest();
-	ArrayTest();
+	// ArrayTest();
+	// TimeTest();
 
     return 0;
 }
