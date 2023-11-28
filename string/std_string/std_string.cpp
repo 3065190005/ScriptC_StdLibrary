@@ -7,6 +7,8 @@
 #define PARAMS(var) std::vector<auto_c>* var = (std::vector<auto_c>*)param
 #define PTR(var) (*var)
 
+#define THROWINFO(fun_name, ...) "Vm : function " #fun_name " param need ¡°"#__VA_ARGS__"¡±"
+
 #include <algorithm>
 
 namespace {
@@ -58,12 +60,15 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(split, string, string));
 				return;
 			}
 
 			std::string va1 = LetObject::cast<std::string>(value1);
 			std::string va2 = LetObject::cast<std::string>(value2);
 			auto vecS = kstring::stringSplit(va1, va2);
+
+
 			for (auto i = 0; i < vecS.size(); i ++) {
 				PTR(rets)[i] << vecS.at(i);
 			}
@@ -80,6 +85,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(cut, string, string));
 				return;
 			}
 
@@ -87,6 +93,7 @@ namespace ScriptC {
 			std::string va2 = LetObject::cast<std::string>(value2);
 
 			auto opt = kstring::cutString(va1, va2);
+
 			if (opt.has_value()) {
 				PTR(rets)[0] << opt->first;
 				PTR(rets)[1] << opt->second;
@@ -106,12 +113,14 @@ namespace ScriptC {
 				value2.getType() != LetObject::ObjT::number ||
 				value3.getType() != LetObject::ObjT::number )
 			{
+				throw(THROWINFO(sub, string, number, number));
 				return;
 			}
 
 			std::string va1 = LetObject::cast<std::string>(value1);
 			numberT va2 = LetObject::cast<numberT>(value2);
 			numberT va3 = LetObject::cast<numberT>(value3);
+
 
 			if (va2 > va1.length()) {
 				return;
@@ -139,6 +148,7 @@ namespace ScriptC {
 				value3.getType() != LetObject::ObjT::string ||
 				value4.getType() != LetObject::ObjT::number )
 			{
+				throw(THROWINFO(replace, string, string, string, number));
 				return;
 			}
 
@@ -165,6 +175,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::number )
 			{
+				throw(THROWINFO(at, string, number));
 				return;
 			}
 
@@ -192,6 +203,7 @@ namespace ScriptC {
 				value2.getType() != LetObject::ObjT::number ||
 				value3.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(at, string, number, number));
 				return;
 			}
 
@@ -226,6 +238,7 @@ namespace ScriptC {
 				value2.getType() != LetObject::ObjT::number ||
 				value3.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(insert, string, number, string));
 				return;
 			}
 
@@ -251,6 +264,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 
 			if (value1.getType() != LetObject::ObjT::string){
+				throw(THROWINFO(lens, string));
 				return;
 			}
 
@@ -267,6 +281,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 
 			if (value1.getType() != LetObject::ObjT::string) {
+				throw(THROWINFO(reverse, string));
 				return;
 			}
 
@@ -288,6 +303,7 @@ namespace ScriptC {
 				value3.getType() != LetObject::ObjT::number ||
 				value4.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(fill, string, number, number, string));
 				return;
 			}
 
@@ -329,6 +345,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 
 			if (value1.getType() != LetObject::ObjT::string) {
+				throw(THROWINFO(lower, string));
 				return;
 			}
 
@@ -346,6 +363,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 
 			if (value1.getType() != LetObject::ObjT::string) {
+				throw(THROWINFO(upper, string));
 				return;
 			}
 
@@ -363,6 +381,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 
 			if (value1.getType() != LetObject::ObjT::string) {
+				throw(THROWINFO(tirm, string));
 				return;
 			}
 
@@ -380,6 +399,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 
 			if (value1.getType() != LetObject::ObjT::string) {
+				throw(THROWINFO(up, string));
 				return;
 			}
 
@@ -402,6 +422,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 
 			if (value1.getType() != LetObject::ObjT::string) {
+				throw(THROWINFO(low, string));
 				return;
 			}
 
@@ -426,6 +447,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(count, string, string));
 				return;
 			}
 
@@ -449,6 +471,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(find_all, string, string));
 				return;
 			}
 
@@ -479,6 +502,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(find_first, string, string));
 				return;
 			}
 
@@ -508,6 +532,7 @@ namespace ScriptC {
 				value2.getType() != LetObject::ObjT::string ||
 				value3.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(find_N, string, string, number));
 				return;
 			}
 
@@ -540,6 +565,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(find_not_all, string, string));
 				return;
 			}
 
@@ -571,6 +597,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(find_not_first, string, string));
 				return;
 			}
 
@@ -601,6 +628,7 @@ namespace ScriptC {
 				value2.getType() != LetObject::ObjT::string ||
 				value3.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(find_not_N, string, string, number));
 				return;
 			}
 
@@ -634,6 +662,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(rfind_first, string, string));
 				return;
 			}
 
@@ -663,6 +692,7 @@ namespace ScriptC {
 				value2.getType() != LetObject::ObjT::string ||
 				value3.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(rfind_N, string, string, number));
 				return;
 			}
 
@@ -695,6 +725,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::string ||
 				value2.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(rfind_not_first, string, string));
 				return;
 			}
 
@@ -725,6 +756,7 @@ namespace ScriptC {
 				value2.getType() != LetObject::ObjT::string ||
 				value3.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(rfind_not_N, string, string, number));
 				return;
 			}
 
@@ -757,7 +789,7 @@ namespace ScriptC {
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(isAlpha, string));
 				return;
 			}
 			std::string track;
@@ -782,7 +814,7 @@ namespace ScriptC {
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(isAlnum, string));
 				return;
 			}
 
@@ -808,7 +840,7 @@ namespace ScriptC {
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(hasBlank, string));
 				return;
 			}
 
@@ -834,7 +866,7 @@ namespace ScriptC {
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(isBlank, string));
 				return;
 			}
 
@@ -860,7 +892,7 @@ namespace ScriptC {
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(hasCntrl, string));
 				return;
 			}
 
@@ -886,7 +918,7 @@ namespace ScriptC {
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(isCntrl, string));
 				return;
 			}
 
@@ -911,7 +943,7 @@ namespace ScriptC {
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(isLower, string));
 				return;
 			}
 
@@ -937,7 +969,7 @@ namespace ScriptC {
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << false;
+				throw(THROWINFO(isUpper, string));
 				return;
 			}
 
