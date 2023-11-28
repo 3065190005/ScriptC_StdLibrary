@@ -7,6 +7,9 @@
 #define PARAMS(var) std::vector<auto_c>* var = (std::vector<auto_c>*)param
 #define PTR(var) (*var)
 
+
+#define THROWINFO(fun_name, ...) "Vm : function " #fun_name " param need ¡°"#__VA_ARGS__"¡±"
+
 #include <algorithm>
 #include <optional>
 #include <variant>
@@ -59,6 +62,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params,&value1);
 			if (value1.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(size, array));
 				return;
 			}
 
@@ -76,6 +80,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::array||
 				value2.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(cmp, array, array));
 				return;
 			}
 
@@ -97,6 +102,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 			if (value1.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(max, array));
 				return;
 			}
 
@@ -113,6 +119,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 			if (value1.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(min, array));
 				return;
 			}
 
@@ -130,6 +137,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value2, &value1);
 			if (value1.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(append, array, any));
 				return;
 			}
 
@@ -148,6 +156,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value2, &value1);
 			if (value1.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(count, array, any));
 				return;
 			}
 
@@ -166,6 +175,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value2, &value1);
 			if (value1.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(extend, array, any));
 				return;
 			}
 
@@ -184,6 +194,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 			if (value1.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(back, array));
 				return;
 			}
 
@@ -202,6 +213,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 			if (value1.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(front, array));
 				return;
 			}
 
@@ -220,6 +232,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value2, &value1);
 			if (value1.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(index, array, any));
 				return;
 			}
 
@@ -245,6 +258,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::array||
 				value2.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(insert, array, number, any));
 				return;
 			}
 
@@ -269,6 +283,7 @@ namespace ScriptC {
 				(value2.getType() != LetObject::ObjT::number &&
 				value2.getType() != LetObject::ObjT::string))
 			{
+				throw(THROWINFO(pop, array, number|string));
 				return;
 			}
 
@@ -299,6 +314,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value2, &value1);
 			if (value1.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(remove, array, any));
 				return;
 			}
 
@@ -317,6 +333,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 			if (value1.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(reverse, array));
 				return;
 			}
 
@@ -336,6 +353,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number||
 				value2.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(range, number, number));
 				return;
 			}
 
@@ -358,6 +376,7 @@ namespace ScriptC {
 			Funcs::getParams<LetObject>(params, &value1);
 			if (value1.getType() != LetObject::ObjT::array)
 			{
+				throw(THROWINFO(childs, array));
 				return;
 			}
 

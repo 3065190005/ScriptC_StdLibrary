@@ -28,6 +28,144 @@ void s_call(std::string name, auto_c* ret, Args... Ts) {
     manager->callFunc(func, &param, ret);
 }
 
+void ArrayTest()
+{
+	auto_c ret;
+	auto_c param1, param2, param3, param4;
+
+
+	//// size		返回数组总个数		：数组 -> 成功返回个数，否则返回null
+	//EXPORTDLL(size);
+	param1[0] << "This is 0";
+	param1[1] << "This is 1";
+	param1 << 123.456;
+	s_call(func("size", ArrayS), &ret, param1);
+
+	//// cmp		比较两个数组			：数组1，数组2 -> 成功对比结果返回数字，否则返回null (相等返回0,1大返回数组-11，否则返回1)
+	//EXPORTDLL(cmp);
+	param1[0] << "This is 0 Cmp";
+	param1[1] << "This is 1 Cmp";
+
+	param2[0] << "This is 0 Cmp";
+	param2[1] << "This is 1 Cmp";
+	param1 << 123.456;
+	s_call(func("cmp", ArrayS), &ret, param1, param2);
+
+	//// max		返回列表最大值		：数组 -> 成功返回最大值，否则返回null
+	//EXPORTDLL(max);
+	param1[0] << "This is 0 Max";
+	param1[1] << "This is 1 Max";
+	param1 << 123.456;
+	s_call(func("max", ArrayS), &ret, param1);
+
+	//// min		返回列表最小元素		：数组 -> 成功返回最小值，否则返回null
+	//EXPORTDLL(min);
+	param1[0] << "This is 0 Min";
+	param1[1] << "This is 1 Min";
+	param1 << 123.456;
+	s_call(func("min", ArrayS), &ret, param1);
+
+	//// append	在末尾添加元素		：数组，任意 -> 成功返回添加后的数组，否则返回null
+	//EXPORTDLL(append);
+	param1[0] << "This is 0 Append";
+	param1[1] << "This is 1 Append";
+	param2 << "This is 3 Append";
+	param1 << 123.456;
+	s_call(func("append", ArrayS), &ret, param1, param2);
+
+	//// count	检测某个元素的个数	：数组，任意 -> 成功返回个数，否则返回null
+	//EXPORTDLL(count);
+	param1[0] << "This is 0 Count";
+	param1[1] << "This is 1 Count";
+	param1[2] << "Count Test";
+	param1[3] << "Count Test";
+	param2 << "Count Test";
+	param1 << 123.456;
+	s_call(func("count", ArrayS), &ret, param1, param2);
+
+	//// extend	在末尾添加			：数组，任意 -> 成功返回添加后的新数组，否则返回null
+	//EXPORTDLL(extend);
+	param1[0] << "This is 0 Extend";
+	param1[1] << "This is 1 Extend";
+	param2 << "This is 3 Extend";
+	param1 << 123.456;
+	s_call(func("extend", ArrayS), &ret, param1, param2);
+
+	//// back		返回最后一个元素		：数组 -> 成功返回末尾元素，否则返回null
+	//EXPORTDLL(back);
+	param1[0] << "This is 0 Back";
+	param1[1] << "This is 1 Back";
+	param1[2] << "This is 2 Back";
+	param1 << 123.456;
+	s_call(func("back", ArrayS), &ret, param1);
+
+	//// front	返回第一个元素		：数组 -> 成功返回开头元素，否则返回null
+	//EXPORTDLL(front);
+	param1[0] << "This is 0 Front";
+	param1[1] << "This is 1 Front";
+	param1 << 123.456;
+	s_call(func("front", ArrayS), &ret, param1);
+
+	//// index	查找指定元素第一次位置：数组，任意 -> 成功查找返回下标，否则返回null
+	//EXPORTDLL(index);
+	param1[0] << "This is 0 Index";
+	param1[1] << "This is 1 Index";
+	param1[2] << "Index Test";
+	param1[3] << "Index Test";
+	param1 << 123.456;
+	s_call(func("index", ArrayS), &ret, param1, param2);
+
+	//// insert	将指定内容插入指定位置：数组，下标，任意 -> 成功返回插入后的新数组，否则返回null
+	//EXPORTDLL(insert);
+	param1[0] << "This is 0 Insert";
+	param1[1] << "This is 1 Insert";
+	param2 << 1;
+	param3 << "Insert Value";
+	param1 << 123.456;
+	s_call(func("insert", ArrayS), &ret, param1, param2, param3);
+
+	//// pop		删除数组指定内容		：数组，下标	-> 成功返回删除后的新数组，否则返回null
+	//EXPORTDLL(pop);
+	param1[0] << "This is 0 Pop";
+	param1[1] << "This is 1 Pop";
+	param1["Pop"] << "This is Pop Value";
+	param2 << "Pop";
+	param1 << 123.456;
+	s_call(func("pop", ArrayS), &ret, param1, param2);
+
+	//// remove	移除数组指定的第一个值：数组，任意 -> 成功返回移除后的新数组，否则返回null
+	//EXPORTDLL(remove);
+	param1[0] << "This is 0 Remove";
+	param1[1] << "This is 1 Remove";
+	param2 << "This is 1 Remove";
+	param1 << 123.456;
+	s_call(func("remove", ArrayS), &ret, param1, param2);
+
+	//// reverse	反序					：数组	-> 成功返回新数组，否则返回null
+	//EXPORTDLL(reverse);
+	param1[0] << "This is 0 Reverse";
+	param1[1] << "This is 1 Reverse";
+	param1[2] << "This is 2 Reverse";
+	param1 << 123.456;
+	s_call(func("reverse", ArrayS), &ret, param1);
+
+	//// range	范围					：数字1，数组2 -> 成功返回基于数组1和数字2范围区间的数组，否则返回null
+	//EXPORTDLL(range);
+	param1 << 0;
+	param2 << 10;
+	param1 << "123";
+	s_call(func("range", ArrayS), &ret, param1, param2);
+
+	//// childs	返回数组所有下标		：数组 -> 成功将该数组的所有下标作为数组返回，失败返回null
+	//EXPORTDLL(childs);
+	param1[0] << "This is 0 Childs";
+	param1[1] << "This is 1 Childs";
+	param1["Child_1"] << "This is Child_1 Childs";
+	param1["Child_2"] << "This is Child_2 Childs";
+	param1 << 123.456;
+	s_call(func("childs", ArrayS), &ret, param1);
+}
+
 void StringTest()
 {
 	auto_c ret;
@@ -590,7 +728,8 @@ int main(int args , char** argv)
 
 	// OsTest();
 	// MathTest();
-	StringTest();
+	// StringTest();
+	ArrayTest();
 
     return 0;
 }
