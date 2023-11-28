@@ -113,6 +113,9 @@
     <ClCompile Include="..\..\array\std_array\Public\AutoObject\LetArrayMotion.cpp">
       <Filter>Public\AutoObject</Filter>
     </ClCompile>
+    <ClCompile Include="Public\AutoObject\LetTools.cpp">
+      <Filter>Public\AutoObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Public\AutoObject\LetObject.tpp">

@@ -197,6 +197,7 @@ update.bat</Command>
     <ClCompile Include="Public\AutoObject\LetManager.cpp" />
     <ClCompile Include="Public\AutoObject\LetObject.cpp" />
     <ClCompile Include="Public\AutoObject\LetObjectOperator.cpp" />
+    <ClCompile Include="Public\AutoObject\LetTools.cpp" />
     <ClCompile Include="std_io.cpp" />
   </ItemGroup>
   <ItemGroup>

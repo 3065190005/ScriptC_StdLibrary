@@ -414,13 +414,14 @@ namespace ScriptC {
 
 		EXPORTDLL(print)
 		{
+			LetTools tools;
 			std::vector<auto_c>* params = (std::vector<auto_c>*)param;
 			auto_c* rets = (auto_c*)ret;
 			for (auto& i : *params) {
-				printAuto_c(i);
+				tools.print(i);
 			}
 
-			*rets = auto_c(false,false);
+			*rets = auto_c();
 		}
 
 		EXPORTDLL(input)

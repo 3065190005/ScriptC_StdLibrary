@@ -35,6 +35,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function abs params need ¡°number¡±");
 				return;
 			}
 
@@ -53,6 +54,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number ||
 				value2.getType() != LetObject::ObjT::number)
 			{
+				throw("Vm : function div params need ¡°number, number¡±");
 				return;
 			}
 
@@ -73,6 +75,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function acos params need ¡°number¡±");
 				return;
 			}
 
@@ -89,6 +92,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function asin params need ¡°number¡±");
 				return;
 			}
 
@@ -105,6 +109,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function atan params need ¡°number¡±");
 				return;
 			}
 
@@ -124,6 +129,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number|| 
 				value2.getType() != LetObject::ObjT::number) 
 			{
+				throw("Vm : function atan2 params need ¡°number, number¡±");
 				return;
 			}
 
@@ -141,6 +147,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function cos params need ¡°number¡±");
 				return;
 			}
 
@@ -157,6 +164,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function cosh params need ¡°number¡±");
 				return;
 			}
 
@@ -173,6 +181,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function sin params need ¡°number¡±");
 				return;
 			}
 
@@ -189,6 +198,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function sinh params need ¡°number¡±");
 				return;
 			}
 
@@ -205,6 +215,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function tanh params need ¡°number¡±");
 				return;
 			}
 
@@ -221,6 +232,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function exp params need ¡°number¡±");
 				return;
 			}
 
@@ -237,6 +249,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function log params need ¡°number¡±");
 				return;
 			}
 
@@ -253,6 +266,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function log10 params need ¡°number¡±");
 				return;
 			}
 
@@ -272,6 +286,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number|| 
 				value2.getType() != LetObject::ObjT::number)
 			{
+				throw("Vm : function pow params need ¡°number, number¡±");
 				return;
 			}
 
@@ -289,6 +304,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function sqrt params need ¡°number¡±");
 				return;
 			}
 
@@ -305,6 +321,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function ceil params need ¡°number¡±");
 				return;
 			}
 
@@ -321,6 +338,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function floor params need ¡°number¡±");
 				return;
 			}
 
@@ -336,6 +354,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function frexp params need ¡°number¡±");
 				return;
 			}
 
@@ -358,6 +377,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number ||
 				value2.getType() != LetObject::ObjT::number)
 			{
+				throw("Vm : function ldexp params need ¡°number¡±");
 				return;
 			}
 
@@ -374,6 +394,7 @@ namespace ScriptC {
 
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::number) {
+				throw("Vm : function modf params need ¡°number¡±");
 				return;
 			}
 
