@@ -28,6 +28,65 @@ void s_call(std::string name, auto_c* ret, Args... Ts) {
     manager->callFunc(func, &param, ret);
 }
 
+void ThreadTest()
+{
+	auto_c ret, param1, param2, param3, param4;
+
+	//thread_create		 创建lua线程		：成功返回按钮id，否则返回null
+	//EXPORTDLL(thread_create);
+	param1 << 123;
+	s_call(func("thread_create", ThreadS), &ret, param1);
+	param1 = ret;
+
+	//thread_set			设置全局变量		：成功返回true，否则返回null
+	//EXPORTDLL(thread_set);
+	param1 << "Error Test";
+	param2 << "C_number";
+	param3 << 114514;
+	s_call(func("thread_set", ThreadS), &ret, param1, param2, param3);
+
+	//thread_run			运行线程			：成功返回true，否则返回null
+	//EXPORTDLL(thread_run);
+	s_call(func("thread_run", ThreadS), &ret, param1);
+
+	//thread_state			获取线程状态		：成功返回状态，否则返回null
+	//EXPORTDLL(thread_state);
+	s_call(func("thread_state", ThreadS), &ret, param1);
+
+	//thread_join		    结合线程		：成功返回true，否则返回null
+	//EXPORTDLL(thread_join);
+	s_call(func("thread_join", ThreadS), &ret, param1);
+
+	//thread_detach		分离线程		：成功返回true，否则返回null
+	//EXPORTDLL(thread_detach);
+	s_call(func("thread_detach", ThreadS), &ret, param1);
+
+	//thread_wait			等待线程结束		：成功返回true，否则返回null
+	//EXPORTDLL(thread_wait);
+	s_call(func("thread_wait", ThreadS), &ret, param1);
+
+	//thread_stop			挂起线程		：成功返回true，否则返回null
+	//EXPORTDLL(thread_stop);		有几率造成死锁
+	s_call(func("thread_stop", ThreadS), &ret, param1);
+
+	//thread_resume		恢复线程		：成功返回true，否则返回null
+	//EXPORTDLL(thread_resume);	有几率造成死锁
+	s_call(func("thread_resume", ThreadS), &ret, param1);
+
+	//thread_kill		    杀死线程		：成功返回true，否则返回null
+	//EXPORTDLL(thread_kill);		有几率造成死锁
+	s_call(func("thread_kill", ThreadS), &ret, param1);
+
+	//thread_get			获取全局变量		：成功返回变量值，否则返回null
+	//EXPORTDLL(thread_get);
+	param2 << "C_number";
+	s_call(func("thread_get", ThreadS), &ret, param1, param2);
+
+	//thread_clear			清理无效线程		：成功返回true，否则返回null
+	//EXPORTDLL(thread_clear);
+	s_call(func("thread_clear", ThreadS), &ret, param1);
+}
+
 void DialogTest()
 {
 	auto_c ret, param1, param2, param3, param4;
@@ -872,13 +931,15 @@ bool initConsoleArgv(int args, char** argv)
 int main(int args , char** argv)
 {
 	initConsoleArgv(args, argv);
-	auto_c rets, param1, param2, param3, param4, param5, param6, param7, param8, param9;
+	auto_c rets, param1, param2, param3, param4, param5, param6, param7, param8, param9, param10;
     
 	param1[0] << "EHllo Number";
 	param1["Hello"] << 789456;
 	param1["list"]["child"] << "This is Child";
 	param1["list"]["parent"] << "This is Parent";
 	param1["list"]["class"] << "This is class";
+
+	param2 << __TIME__;
 
 	s_call(func("print", IoS), &rets, param2);
 
@@ -887,7 +948,9 @@ int main(int args , char** argv)
 	// StringTest();
 	// ArrayTest();
 	// TimeTest();
-	DialogTest();
+	// DialogTest();
+
+	ThreadTest();
 
     return 0;
 }

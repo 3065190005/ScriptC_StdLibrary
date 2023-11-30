@@ -7,6 +7,8 @@
 #define PARAMS(var) std::vector<auto_c>* var = (std::vector<auto_c>*)param
 #define PTR(var) (*var)
 
+#define THROWINFO(fun_name, ...) "Vm : function " #fun_name " param need ¡°"#__VA_ARGS__"¡±"
+
 #include <algorithm>
 
 #include "LuaThread/ThreadChild.h"
@@ -61,6 +63,7 @@ namespace ScriptC {
 			auto value1 = Funcs::getParam<LetObject>(params);
 			if (value1.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(thread_create, string));
 				return;
 			}
 
@@ -91,6 +94,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number ||
 				value2.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(thread_set, number, string));
 				return;
 			}
 
@@ -125,6 +129,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number ||
 				value2.getType() != LetObject::ObjT::string)
 			{
+				throw(THROWINFO(thread_get, number, string));
 				return;
 			}
 
@@ -154,6 +159,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(thread_run, number));
 				return;
 			}
 
@@ -183,6 +189,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(thread_state, number));
 				return;
 			}
 
@@ -211,6 +218,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(thread_wait, number));
 				return;
 			}
 
@@ -240,6 +248,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(thread_stop, number));
 				return;
 			}
 
@@ -269,6 +278,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(thread_resume, number));
 				return;
 			}
 
@@ -298,6 +308,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(thread_kill, number));
 				return;
 			}
 
@@ -327,6 +338,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(thread_join, number));
 				return;
 			}
 
@@ -356,6 +368,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(thread_detach, number));
 				return;
 			}
 
@@ -384,6 +397,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::number)
 			{
+				throw(THROWINFO(thread_clear, number));
 				return;
 			}
 
