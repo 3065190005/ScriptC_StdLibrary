@@ -8,6 +8,8 @@
 #define PARAMS(var) std::vector<auto_c>* var = (std::vector<auto_c>*)param
 #define PTR(var) (*var)
 
+#define THROWINFO(fun_name, ...) "Vm : function " #fun_name " param need ¡°"#__VA_ARGS__"¡±"
+
 #include <algorithm>
 #include "Socket/SocketClass.h"
 
@@ -63,7 +65,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number ||
 				value2.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << 0;
+				throw(THROWINFO(socket_create, number, number));
 				return;
 			}
 
@@ -93,7 +95,7 @@ namespace ScriptC {
 				value2.getType() != LetObject::ObjT::string ||
 				value3.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << 0;
+				throw(THROWINFO(socket_bind, number, string, number));
 				return;
 			}
 
@@ -125,7 +127,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number ||
 				value2.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << 0;
+				throw(THROWINFO(socket_listen, number, number));
 				return;
 			}
 
@@ -155,7 +157,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << 0;
+				throw(THROWINFO(socket_accept, number));
 				return;
 			}
 
@@ -195,7 +197,7 @@ namespace ScriptC {
 				value2.getType() != LetObject::ObjT::string ||
 				value3.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << 0;
+				throw(THROWINFO(socket_connect, number, string, number));
 				return;
 			}
 
@@ -228,7 +230,7 @@ namespace ScriptC {
 				value2.getType() != LetObject::ObjT::string ||
 				value3.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << 0;
+				throw(THROWINFO(socket_send, number, string, number));
 				return;
 			}
 
@@ -257,7 +259,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number ||
 				value2.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << 0;
+				throw(THROWINFO(socket_recv, number, number));
 				return;
 			}
 
@@ -293,7 +295,7 @@ namespace ScriptC {
 				value4.getType() != LetObject::ObjT::string ||
 				value5.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << 0;
+				throw(THROWINFO(socket_sendto, number, string, number, string, number));
 				return;
 			}
 
@@ -324,7 +326,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::number ||
 				value2.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << 0;
+				throw(THROWINFO(socket_recvfrom, number, number));
 				return;
 			}
 
@@ -363,7 +365,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << 0;
+				throw(THROWINFO(socket_close, number));
 				return;
 			}
 
@@ -391,7 +393,7 @@ namespace ScriptC {
 			if (value1.getType() != LetObject::ObjT::array ||
 				value2.getType() != LetObject::ObjT::number)
 			{
-				PTR(rets) << 0;
+				throw(THROWINFO(socket_select, array, number));
 				return;
 			}
 
@@ -536,7 +538,7 @@ namespace ScriptC {
 
 			if (value1.getType() != LetObject::ObjT::string)
 			{
-				PTR(rets) << 0;
+				throw(THROWINFO(socket_gethostbyname, string));
 				return;
 			}
 

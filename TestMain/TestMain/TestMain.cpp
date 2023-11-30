@@ -28,6 +28,86 @@ void s_call(std::string name, auto_c* ret, Args... Ts) {
     manager->callFunc(func, &param, ret);
 }
 
+void DirectTest()
+{
+	auto_c ret, param1, param2, param3, param4, param5;
+
+}
+
+void SocketTest()
+{
+	auto_c ret, param1, param2, param3, param4, param5, client_ip;
+	//socket_create		 创建socket		：成功返回socket id，否则返回错误码id
+	//EXPORTDLL(socket_create);
+	s_call(func("socket_create", SocketS), &ret, param1, param2);
+
+	param1 = ret;
+
+	//socket_bind			 绑定socket		：成功返回true ，否则返回错误码id
+	//EXPORTDLL(socket_bind);
+	param2 << "127.0.0.1";
+	param3 << 9989;
+	s_call(func("socket_bind", SocketS), &ret, param1, param2, param3);
+
+
+	//socket_listen		 监听socket		：成功返回true ，否则返回错误码id
+	//EXPORTDLL(socket_listen);
+	param2 << 10;
+	s_call(func("socket_listen", SocketS), &ret, param1, param2);
+
+
+	//socket_accept		 接受socket		：成功返回array  ，否则返回错误码id
+	//EXPORTDLL(socket_accept);
+	s_call(func("socket_accept", SocketS), &ret, param1);
+	client_ip = ret;
+	
+	//socket_connect		 连接socket		：成功返回true ，否则返回错误码id
+	//EXPORTDLL(socket_connect);
+	s_call(func("socket_connect", SocketS), &ret, param1, param2, param3);
+
+
+	//socket_send			 发送字段Tcp		：成功返回发送长度 ，否则返回错误码id
+	//EXPORTDLL(socket_send);
+	s_call(func("socket_send", SocketS), &ret, param1, param2, param3);
+
+
+	//socket_recv			 接受字段Tcp		：成功返回接受字符串 ，否则返回错误码id
+	//EXPORTDLL(socket_recv);
+	s_call(func("socket_recv", SocketS), &ret, param1, param2);
+
+
+	//socket_sendto		 发送字段Udp		：成功返回发送长度 ，否则返回错误码id
+	//EXPORTDLL(socket_sendto);
+	s_call(func("socket_sendto", SocketS), &ret, param1, param2, param3, param4, param5);
+
+
+	//socket_recvfrom		 接受字段Udp		：成功返回array ，否则返回错误码id
+	//EXPORTDLL(socket_recvfrom);
+	s_call(func("socket_recvfrom", SocketS), &ret, param1, param2);
+
+
+	//socket_close			 关闭socket 		：成功返回true ，否则返回false
+	//EXPORTDLL(socket_close);
+
+	s_call(func("socket_close", SocketS), &ret, param1);
+
+	//select 
+
+	//socket_select		检测一组一维数组socket并返回 	：成功返回检测数组 ，否则返回错误码id
+	//EXPORTDLL(socket_select);
+	s_call(func("socket_select", SocketS), &ret, param1, param2);
+
+
+	//socket_gethostname	获取主机名 	：成功返回字符串 ，否则返回错误码id
+	//EXPORTDLL(socket_gethostname);
+	s_call(func("socket_gethostname", SocketS), &ret);
+
+
+	//socket_gethostbyname 通过主机名获取ip 	：成功返回字符串 ，否则返回错误码id
+	//EXPORTDLL(socket_gethostbyname);
+	s_call(func("socket_gethostbyname", SocketS), &ret, param1);
+}
+
 void ThreadTest()
 {
 	auto_c ret, param1, param2, param3, param4;
@@ -931,7 +1011,7 @@ bool initConsoleArgv(int args, char** argv)
 int main(int args , char** argv)
 {
 	initConsoleArgv(args, argv);
-	auto_c rets, param1, param2, param3, param4, param5, param6, param7, param8, param9, param10;
+	auto_c rets, param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, param11;
     
 	param1[0] << "EHllo Number";
 	param1["Hello"] << 789456;
@@ -949,8 +1029,8 @@ int main(int args , char** argv)
 	// ArrayTest();
 	// TimeTest();
 	// DialogTest();
-
-	ThreadTest();
+	// ThreadTest();
+	SocketTest();
 
     return 0;
 }
